@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('IP', 'USERNAME', 'PASSWORD');
+$link = mysqli_connect('http://yoursmartsocket.com/', 'root', 'bitnami');
 if (!$link)
 {
 	$output = 'Unable to connect to the database server.';

@@ -80,6 +80,12 @@ if (isset($_POST['action']) and $_POST['action'] == 'register')
 }
 /*************************************************************************/
 
+if (isset($_GET['login']))
+{
+	include 'login.html.php';
+	exit();
+}
+
 if (isset($_POST['action']) and $_POST['action'] == 'login' )
 {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);

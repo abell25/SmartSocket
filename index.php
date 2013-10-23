@@ -53,12 +53,11 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 /*********************Registration page code***************************/
 if (isset($_GET['register']))
 {
-	$action = 'register_form'
 	include 'register.html.php';
 	exit();
 }
 
-if (isset($_POST['action']) and $_POST['action'] == 'register_form')
+if (isset($_POST['action']) and $_POST['action'] == 'register')
 {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -83,12 +82,11 @@ if (isset($_POST['action']) and $_POST['action'] == 'register_form')
 
 if (isset($_GET['login']))
 {
-	$action = 'login_form'
 	include 'login.html.php';
 	exit();
 }
 
-if (isset($_POST['action']) and $_POST['action'] == 'login_form' )
+if (isset($_POST['action']) and $_POST['action'] == 'login' )
 {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$password = mysqli_real_escape_string($connection, $_POST['password']);

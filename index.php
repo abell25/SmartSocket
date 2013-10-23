@@ -30,7 +30,7 @@ if (!mysqli_select_db($link, 'smartsocket'))
 
 if (isset($_GET['voltage']))
 {
-	$output = $_GET['voltage']);
+	$output = $_GET['voltage'];
 
 	include 'output.html.php';
 	exit();

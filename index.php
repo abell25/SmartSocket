@@ -67,7 +67,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'register_form')
 	$output = 'Username: ' . $username . ' Email: ' . $email . ' Password: ' . $password;
 	
 	$sql = 'INSERT INTO user (username,email,password) VALUES
-			("'. $username .'","'. $email .'","'. $password .'")';
+			('. $username .','. $email .','. $password .')';
 			
 	if (!mysqli_query($connection, $sql))
 	{

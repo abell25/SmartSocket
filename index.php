@@ -28,9 +28,25 @@ if (!mysqli_select_db($link, 'smartsocket'))
 	exit();
 }
 
-if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_GET['time']))
+if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_GET['time']) and isset($_GET['state']))
 {
-	$output = $_GET['id'] . ' ' . $_GET['I'] . ' ' . $_GET['V'] . ' ' . $_GET['time']; 
+	$id = $_GET['id'];
+	$I = $_GET['I'];
+	$V = $_GET['V'];
+	$time = $_GET['time'];
+	$state = $_GET['state'];
+	
+	$output = $id . ' ' . $I . ' ' . $V . ' ' . $time . ' ' . $state; //print to console
+	
+	$sql = 'INSERT INTO reading(dev_id, time_id, milliamps, millivolts, state) VALUES 
+			($id,$I,$V,$time,$state)';
+			
+	if (!mysqli_query($link, $sql))
+	{
+		$error = 'Error adding submitted joke: ' . mysqli_error($link);
+		include 'error.html.php';
+		exit();
+	}
 
 	include 'output.html.php';
 	exit();

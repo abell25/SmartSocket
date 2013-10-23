@@ -44,7 +44,6 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 	if (!mysqli_query($link, $sql))
 	{
 		$error = 'Error adding information: ' . mysqli_error($link);
-		exit();
 	}
 
 	include 'output.html.php';

@@ -10,5 +10,8 @@
 		<p>
 			<?php echo $output; ?>
 		</p>
+		<p>
+			<?php echo $error; ?>
+		</p>
 	</body>
 </html>

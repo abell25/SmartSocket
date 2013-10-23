@@ -14,10 +14,10 @@
 				<input id="email-id" type="email" name="email" /><br/><br/>
 				
 				<label for="password1-id">Password:</label>
-				<input id="password1-id" class="text-input" type="password" name="password1" /><br/><br/>
+				<input id="password1-id" class="text-input" type="password" name="password" /><br/><br/>
 				
 				<label for="password2-id">Retype Password:</label>
-				<input id="password2-id" class="text-input" type="password" name="password2" /><br/><br/>
+				<input id="password2-id" class="text-input" type="password" name="password_repeat" /><br/><br/>
 				
 				<input type="submit" value="Register"/>
 			</form>

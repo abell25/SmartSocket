@@ -53,7 +53,6 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 /*********************Registration page code***************************/
 if (isset($_GET['register']))
 {
-	$action = 'register';
 	include 'register.html.php';
 	exit();
 }
@@ -83,7 +82,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'register')
 
 if (isset($_GET['login']))
 {
-	$action = 'login';
 	include 'login.html.php';
 	exit();
 }

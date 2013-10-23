@@ -57,8 +57,7 @@ if (isset($_GET['register']))
 	exit();
 }
 
-if (isset($_POST['action']) and $_POST['action'] == 'register')
-{
+if (isset($_POST['username']) and isset($_POST['email']) and isset($_POST['password'])) {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$email = mysqli_real_escape_string($connection, $_POST['email']);
 	$password = mysqli_real_escape_string($connection, $_POST['password']);
@@ -82,6 +81,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'register')
 
 if (isset($_GET['login']))
 {
+	$action = 'login';
 	include 'login.html.php';
 	exit();
 }

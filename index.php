@@ -39,7 +39,7 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 	$output = $id . ' ' . $I . ' ' . $V . ' ' . $time . ' ' . $state; //print to page
 	
 	$sql = 'INSERT INTO reading(dev_id, time_id, milliamps, millivolts, state) VALUES 
-			('. $id .','. $I .','. $V .','. $time .','. $state .')';
+			('. $id .','. $time .','. $I .','. $V .','. $state .')';
 			
 	if (!mysqli_query($link, $sql))
 	{

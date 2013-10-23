@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('10.137.2.94');
+$link = mysqli_connect('yoursmartsocket.com');
 if (!$link)
 {
 	$output = 'Unable to connect to the database server.';

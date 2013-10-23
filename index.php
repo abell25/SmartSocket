@@ -1,32 +1,5 @@
 <?php
-$connection = mysqli_connect('localhost','root','bitnami');
-
-if(mysqli_connect_errno($connection)) {
-	$output = "Failed to connect to MySQL:" . mysqli_connect_error();
-	include 'output.html.php';
-	exit();
-}
-
-if (!$connection)
-{
-	$output = 'Unable to connect to the database server.';
-	include 'output.html.php';
-	exit();
-}
-
-if (!mysqli_set_charset($connection, 'utf8'))
-{
-	$output = 'Unable to set database connection encoding.';
-	include 'output.html.php';
-	exit();
-}
-
-if (!mysqli_select_db($connection, 'smartsocket'))
-{
-	$output = 'Unable to locate the smartsocket database.';
-	include 'output.html.php';
-	exit();
-}
+include $_SERVER['DOCUMENT_ROOT'] . '/SmartSocket/includes/db_connection.php';
 
 if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_GET['time']) and isset($_GET['state']))
 {
@@ -112,6 +85,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'login' )
 	exit();
 }
 
-$output = 'Database connection established.\nServer root: ' . $_SERVER['DOCUMENT_ROOT'];
+$output = 'Database connection established.<br/>Server root: ' . $_SERVER['DOCUMENT_ROOT'];
 include 'output.html.php';
 ?>

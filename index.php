@@ -86,6 +86,6 @@ if (isset($_GET['login']))
 	exit();
 }
 
-$output = 'Database connection established.';
+$output = 'Database connection established. \nServer Root: ' . $_SERVER['DOCUMENT_ROOT'];
 include 'output.html.php';
 ?>

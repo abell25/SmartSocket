@@ -36,15 +36,14 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 	$time = $_GET['time'];
 	$state = $_GET['state'];
 	
-	$output = $id . ' ' . $I . ' ' . $V . ' ' . $time . ' ' . $state; //print to console
+	$output = $id . ' ' . $I . ' ' . $V . ' ' . $time . ' ' . $state; //print to page
 	
 	$sql = 'INSERT INTO reading(dev_id, time_id, milliamps, millivolts, state) VALUES 
-			($id,$I,$V,$time,$state)';
+			('. $id .','. $I .','. $V .','. $time .','. $state .')';
 			
 	if (!mysqli_query($link, $sql))
 	{
-		$error = 'Error adding submitted joke: ' . mysqli_error($link);
-		include 'error.html.php';
+		$error = 'Error adding information: ' . mysqli_error($link);
 		exit();
 	}
 

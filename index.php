@@ -57,7 +57,7 @@ if (isset($_GET['register']))
 	exit();
 }
 
-if (isset($_POST['username']) and isset($_POST['email']) and isset($_POST['password']))
+if (isset($_POST['action']) and $_POST['action'] == 'register')
 {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$email = mysqli_real_escape_string($connection, $_POST['email']);
@@ -80,9 +80,29 @@ if (isset($_POST['username']) and isset($_POST['email']) and isset($_POST['passw
 }
 /*************************************************************************/
 
-if (isset($_GET['login']))
+if (isset($_POST['action']) and $_POST['action'] == 'login' )
 {
-	include 'login.html.php';
+	$username = mysqli_real_escape_string($connection, $_POST['username']);
+	$password = mysqli_real_escape_string($connection, $_POST['password']);
+	
+	$output = 'Username: ' . $username . ' Password: ' . $password;
+	
+	$sql = 'SELECT COUNT(*) FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
+	$result = mysqli_query($link, $sql);
+	if (!$result)
+	{
+		$error = 'Error seeing if user exists in the DB.';
+		include 'output.html.php';
+		exit();
+	}	
+	
+	if($result > 0) {
+		$output .= '\nAccess Granted!';
+	} else {
+		$output .= '\nAccess Denied! Please register first...';
+	}
+	
+	include 'output.html.php';
 	exit();
 }
 

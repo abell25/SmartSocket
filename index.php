@@ -1,8 +1,10 @@
 <?php
-$link = mysqli_connect('yoursmartsocket.com',,);
+$link = mysqli_connect('yoursmartsocket.com');
 
 if(mysqli_connect_errno($con)) {
-	echo "Failed to connect to MySQL:" . mysqli_connect_error();
+	$output = "Failed to connect to MySQL:" . mysqli_connect_error();
+	include 'output.html.php';
+	exit();
 }
 
 if (!$link)

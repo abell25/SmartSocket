@@ -6,7 +6,7 @@
 	</head>
 	<body>	
 		<div id="content">
-			<form id="registration_form" method="POST" action="?login">
+			<form id="registration_form" method="POST" action="login">
 				<label for="username-id">Username:</label>
 				<input id="username-id" type="text" name="username" autofocus="autofocus" /><br/><br/>
 				

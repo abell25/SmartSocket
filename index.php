@@ -50,6 +50,12 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 	exit();
 }
 
+if (isset($_GET['login']))
+{
+	include 'register.html.php';
+	exit();
+}
+
 $output = 'Database connection established.';
 include 'output.html.php';
 ?>

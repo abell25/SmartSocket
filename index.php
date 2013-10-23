@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('yoursmartsocket.com','bitnami');
+$link = mysqli_connect('10.137.2.94','bitnami'); //10.137.2.94 yoursmartsocket.com
 
 if(mysqli_connect_errno($link)) {
 	$output = "Failed to connect to MySQL:" . mysqli_connect_error();

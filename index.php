@@ -28,9 +28,9 @@ if (!mysqli_select_db($link, 'smartsocket'))
 	exit();
 }
 
-if (isset($_GET['voltage']))
+if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_GET['time']))
 {
-	$output = $_GET['voltage'];
+	$output = $_GET['id'] . ' ' . $_GET['I'] . ' ' $_GET['V'] . ' ' . $_GET['time'];
 
 	include 'output.html.php';
 	exit();

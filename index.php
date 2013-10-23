@@ -112,6 +112,6 @@ if (isset($_POST['action']) and $_POST['action'] == 'login' )
 	exit();
 }
 
-$output = 'Database connection established.';
+$output = 'Database connection established.\nServer root: ' . $_SERVER['DOCUMENT_ROOT'];
 include 'output.html.php';
 ?>

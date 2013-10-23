@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect('10.137.2.94', 'root', 'bitnami');
+$link = mysqli_connect('10.137.2.94');
 if (!$link)
 {
 	$output = 'Unable to connect to the database server.';

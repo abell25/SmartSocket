@@ -1,5 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] .
-		'/SmartSocket/includes/helpers.inc.php'; ?>
+		'/includes/helpers.inc.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +8,7 @@
 	</head>
 	<body>	
 		<div id="content">
-			<form id="registration_form" method="POST" action="?">
+			<form id="registration_form" method="POST" action="?register">
 
 				<label for="username-id">Username:</label>
 				<input id="username-id" type="text" name="username" autofocus="autofocus" /><br/><br/>

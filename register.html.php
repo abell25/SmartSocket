@@ -1,5 +1,5 @@
 <?php include_once $_SERVER['DOCUMENT_ROOT'] .
-		'/includes/helpers.inc.php'; ?>
+		'/SmartSocket/includes/helpers.inc.php'; ?>
 <!DOCTYPE html>
 <html>
 	<head>

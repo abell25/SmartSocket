@@ -1,0 +1,153 @@
+body {
+	margin:0px;
+	padding:0px;
+	background:url(images/background-pattern.jpg) top left;
+}
+
+a {
+	font-family: Arial, sans-serif;
+	text-decoration:none;
+}
+
+ul {
+	list-style:none;
+}
+
+h1 {
+	font-family: 'Raleway', sans-serif;
+	font-weight:800;
+	font-size:110%;
+	margin:0;
+	padding:0;
+}
+
+#wrapper {
+	width:1080px;
+	margin:0 auto;
+	padding:0px;
+	background:#eeeeee;
+}
+
+#header {
+	width:1080px;
+	height:180px;
+	display:inline-block;
+	background:url(images/background-header.jpg) repeat-x top left;
+}
+
+#navbar {
+	width:940px;
+	height:60px;
+	margin:70px auto;
+	background:url(images/navbar-white.jpg) repeat-x top left;
+	position:relative;
+}
+
+#logo {
+	width:200px;
+	float:left;
+}
+
+#home {
+	width:38px;
+	height:39px;
+	background:url(images/home-icon.png);
+	position:absolute;
+	top:10px;
+	left:180px;
+}
+
+#home:hover {
+	background:url(images/home-icon-hover.png);
+}
+
+#navigation {
+	width:740px;
+	height:60px;
+	float:right;
+	background:url(images/navbar-blue.jpg) repeat-x top right;
+}
+
+#navigation ul {
+	height:60px;
+	margin:0 0 0 30px;
+	padding:0;
+}
+
+#navigation li {
+	height:60px;
+	display:inline-block;
+}
+
+#navigation li a {
+	height:38px;
+	display:inline-block;
+	font-family: 'Raleway', sans-serif;
+	font-weight:800;
+	text-transform:uppercase;
+	color:#ffffff;
+	padding:22px 60px 0 60px;
+}
+
+#navigation li a:hover,
+#navigation li a.active {
+	background:url(images/navigation-hover.jpg) repeat-x top left;
+}
+
+#content {
+	width:940px;
+	height:1000px;
+	margin:0 70px 0 70px;
+	display:inline-block;
+}
+
+#footer {
+	width:940px;
+	height:170px;
+	margin:0 70px 0 70px;
+	padding-bottom:45px;
+	display:inline-block;
+}
+
+.section-separator {
+	width:940px;
+	height:10px;
+	background:url(images/separator.jpg) repeat-x left;
+	margin-bottom:20px;
+}
+
+.link-separator {
+	width:164px;
+	height:1px;
+	background:url(images/link-separator.jpg);
+	margin:10px 0 10px 0;
+}
+
+.link-section {
+	width:164px;
+	display:inline-block;
+	margin-right:30px;
+}
+
+.link-section h1 {
+	color:#493c39;
+}
+
+.link-section ul {
+	margin:0;
+	padding:0;
+}
+
+.link-section li {
+	margin-bottom:10px;
+}
+
+.link-section a {
+	color:#944737;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+
+.clearfix:after { clear: both }
+
+.clearfix { zoom: 1 }

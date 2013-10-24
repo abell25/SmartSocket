@@ -13,6 +13,7 @@ CREATE TABLE user (
 CREATE TABLE device (
 	dev_id SMALLINT NOT NULL PRIMARY KEY,
 	user_id SMALLINT NOT NULL,
+	nickname varchar(50) NOT NULL,
 	resistance SMALLINT NULL,
 	schedule_last_modified TIMESTAMP NULL,
 	schedule TEXT NULL,
@@ -24,9 +25,9 @@ CREATE TABLE device (
 CREATE TABLE reading (
 	dev_id SMALLINT NOT NULL,
 	time_id TIMESTAMP NOT NULL,
-	voltage1 FLOAT NOT NULL,
-	voltage2 FLOAT NOT NULL,
-	state BOOL NOT NULL
-	FOREIGN KEY (dev_id) REFERENCES device(dev_id)
+	milliamps FLOAT NOT NULL,
+	millivolts FLOAT NOT NULL,
+	state BOOL NOT NULL,
+	FOREIGN KEY (dev_id) REFERENCES device(dev_id),
 	PRIMARY KEY (dev_id, time_id)
 );

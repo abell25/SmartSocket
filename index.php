@@ -1,14 +1,14 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/SmartSocket/includes/db_connection.php';
 
-/*********************Registration page code***************************/
+//*********************Registration page code***************************/
 if (isset($_GET['register']))
 {
 	include 'register.html.php';
 	exit();
 }
 
-if (isset($_POST['username']) and isset($_POST['email']) and isset($_POST['password'])) {
+if (isset($_POST['action']) and $_POST['action'] == 'register_form') {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$email = mysqli_real_escape_string($connection, $_POST['email']);
 	$password = mysqli_real_escape_string($connection, $_POST['password']);
@@ -32,12 +32,11 @@ if (isset($_POST['username']) and isset($_POST['email']) and isset($_POST['passw
 
 if (isset($_GET['login']))
 {
-	$action = 'login';
 	include 'login.html.php';
 	exit();
 }
 
-if (isset($_POST['action']) and $_POST['action'] == 'login' )
+if (isset($_POST['action']) and $_POST['action'] == 'login_form' )
 {
 	$username = mysqli_real_escape_string($connection, $_POST['username']);
 	$password = mysqli_real_escape_string($connection, $_POST['password']);
@@ -45,7 +44,7 @@ if (isset($_POST['action']) and $_POST['action'] == 'login' )
 	$output = 'Username: ' . $username . ' Password: ' . $password;
 	
 	$sql = 'SELECT COUNT(*) FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
-	$result = mysqli_query($link, $sql);
+	$result = mysqli_query($connection, $sql);
 	if (!$result)
 	{
 		$error = 'Error seeing if user exists in the DB.';
@@ -53,16 +52,15 @@ if (isset($_POST['action']) and $_POST['action'] == 'login' )
 		exit();
 	}	
 	
-	if($result > 0) {
-		$output .= '\nAccess Granted!';
+	$num = mysqli_num_rows($result);
+	if($num > 0) {
+		$output .= '<br/>Access Granted!';
 	} else {
-		$output .= '\nAccess Denied! Please register first...';
+		$output .= '<br/>Access Denied! Please register first...';
 	}
 	
 	include 'output.html.php';
 	exit();
 }
 
-$output = 'Database connection established.<br/>Server root: ' . $_SERVER['DOCUMENT_ROOT'];
-include 'output.html.php';
 ?>

@@ -4,12 +4,13 @@
 <html>
 	<head>
 		<title>Registration</title>
-		<!--link type="text/css" rel="stylesheet" href="stylesheet.css"/-->
+		<link type="text/css" rel="stylesheet" href="registration.css"/>
 	</head>
 	<body>	
 		<div id="content">
 			<form id="registration_form" method="POST" action="?register">
-
+				<p id="error_text"></p>
+				
 				<label for="username-id">Username:</label>
 				<input id="username-id" type="text" name="username" required="required" autofocus="autofocus" /><br/><br/>
 				
@@ -22,8 +23,10 @@
 				<label for="password2-id">Retype Password:</label>
 				<input id="password2-id" class="text-input" required="required" type="password" name="password_repeat" /><br/><br/>
 				
-				<input type="submit" value="Register"/>
+				<input type="submit" value="Register" id="submit_button"/>
 			</form>
 		</div>
+		<script src="scripts/jquery-1.10.2.min.js"></script>
+		<script src="scripts/login_validation.js"></script>
 	</body>
 </html>

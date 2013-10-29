@@ -11,7 +11,7 @@ if (isset($_GET['id']) and isset($_GET['I']) and isset($_GET['V']) and isset($_G
 	
 	$output = 'ID: ' . $id . ' Current: ' . $I . ' Voltage: ' . $V . ' Time: ' . $time . ' State: ' . $state; //print to page
 	
-	$sql = 'INSERT INTO reading(dev_id, time_id, milliamps, millivolts, state) VALUES 
+	$sql = 'INSERT INTO reading(dev_id, time_id, amps, volts, state) VALUES 
 			('. $id .','. $time .','. $I .','. $V .','. $state .')';
 			
 	if (!mysqli_query($connection, $sql))

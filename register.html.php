@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<title>Registration</title>
-		<link type="text/css" rel="stylesheet" href="registration.css"/>
+		<link type="text/css" rel="stylesheet" href="styles/registration.css"/>
 	</head>
 	<body>	
 		<div id="content">
@@ -27,6 +27,6 @@
 			</form>
 		</div>
 		<script src="scripts/jquery-1.10.2.min.js"></script>
-		<script src="scripts/login_validation.js"></script>
+		<script src="scripts/registration_validation.js"></script>
 	</body>
 </html>

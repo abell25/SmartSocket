@@ -14,5 +14,4 @@ $(document).ready(function(){
 			$("#submit_button").attr('disabled', false);
 		}
 	} 
-};
 });

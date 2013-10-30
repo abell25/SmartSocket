@@ -8,7 +8,7 @@
 	</head>
 	<body>	
 		<div id="content">
-			<?php htmlout($output); ?>
+			<?php echo $output; ?>
 		</div>
 	</body>
 </html>

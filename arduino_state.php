@@ -14,7 +14,10 @@ if (isset($_GET['id']))
 	
 	$output 'User State' .$info.
 			
-
+	while($info = mysql_fetch_array( $data )) 
+	{ 
+	Print "<b>USER STate:</b> ".$info['user_set_state'] . " "; 
+	} 
 
 	include 'output.html.php';
 	exit();

@@ -72,12 +72,12 @@ if(isset($_GET['login'])) {
 	
 	$output .='<ul>';
 		$output .='<li>Device ID: '.$id.'</li>';
-		$output .='Device Nickname: '.$row['nickname'].'</li>';
-		$output .='Schedule was last modified: '.$row['schedule_last_modified'].'</li>';
-		$output .='Devices Set MAX power usage: '.$row['max_power_usage'].'</li>';
-		$output .='Devices Set MAX cost: '.$row['max_cost'].'</li>';
-		$output .='The user selected state for this device: '.$row['user_set_state'].'</li>';
-		$output .='Owner: '.$row['owner'].'</li>';
+		$output .='<li>Device Nickname: '.$row['nickname'].'</li>';
+		$output .='<li>Schedule was last modified: '.$row['schedule_last_modified'].'</li>';
+		$output .='<li>Devices Set MAX power usage: '.$row['max_power_usage'].'</li>';
+		$output .='<li>Devices Set MAX cost: '.$row['max_cost'].'</li>';
+		$output .='<li>The user selected state for this device: '.$row['user_set_state'].'</li>';
+		$output .='<li>Owner: '.$row['owner'].'</li>';
 	$output .='</ul>';
 	
 	include 'specific_device_page.html.php';

@@ -60,7 +60,7 @@ if(isset($_GET['login'])) {
 
 	$sql = "SELECT nickname,schedule_last_modified,
 				max_power_usage,max_cost,user_set_state
-				,user.username AS owner FROM device,user'
+				,user.username AS owner FROM device,user
 				WHERE device.user_id = user.user_id AND dev_id ='". $id."'";
 	$result = mysqli_query($connection, $sql);
 	if (!$result) {

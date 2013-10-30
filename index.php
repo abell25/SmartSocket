@@ -70,13 +70,30 @@ if(isset($_GET['login'])) {
 	}
 	$row = mysqli_fetch_array($result);
 	
-	$output .='<ul>';
+	$output ='<ul>';
 		$output .='<li>Device ID: '.$id.'</li>';
 		$output .='<li>Device Nickname: '.$row['nickname'].'</li>';
-		$output .='<li>Schedule was last modified: '.$row['schedule_last_modified'].'</li>';
-		$output .='<li>Devices Set MAX power usage: '.$row['max_power_usage'].'</li>';
-		$output .='<li>Devices Set MAX cost: '.$row['max_cost'].'</li>';
-		$output .='<li>The user selected state for this device: '.$row['user_set_state'].'</li>';
+
+		if(is_null($row['schedule_last_modified'])) {
+			$output .='<li>Schedule was last modified: Schedule NOT set</li>';
+		} else {
+			$output .='<li>Schedule was last modified: '.$row['schedule_last_modified'].'</li>';
+		}
+		if(is_null($row['max_power_usage'])) {
+			$output .='<li>Devices Set MAX power usage: NOT set</li>';
+		} else {
+			$output .='<li>Devices Set MAX power usage: '.$row['max_power_usage'].'W</li>';
+		}
+		if(is_null($row['max_cost'])) {
+			$output .='<li>Devices Set MAX cost: NOT set</li>';
+		} else {
+			$output .='<li>Devices Set MAX cost: $'.$row['max_cost'].'</li>';
+		}
+		if(is_null($row['user_set_state'])) {
+			$output .='<li>The user selected state for this device: NOT set</li>';
+		} else {
+			$output .='<li>The user selected state for this device: '.$row['user_set_state'].'</li>';
+		}
 		$output .='<li>Owner: '.$row['owner'].'</li>';
 	$output .='</ul>';
 	

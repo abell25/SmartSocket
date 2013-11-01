@@ -1,6 +1,6 @@
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/includes/db_connection.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/SmartSocket/includes/db_connection.php';
 
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];

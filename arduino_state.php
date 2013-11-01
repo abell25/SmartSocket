@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 	}
 	
 	$info = mysql_fetch_assoc($result);
-	$output 'User State: ' .$info['user_set_state'];
+	$output = 'User State: ' .$info['user_set_state'];
 			 
 	echo $output;
 	include 'output.html.php';

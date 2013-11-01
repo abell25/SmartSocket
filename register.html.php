@@ -20,7 +20,7 @@
 				<label for="password2-id">Retype Password:</label>
 				<input id="password2-id" class="text-input" required="required" type="password" name="password_repeat" /><br/><br/>
 				
-				<input type="submit" value="Register" id="submit_button"/>
+				<input type="submit" value="Register" id="submit_button"/><p>Already have an account?<a href="?login"> Login</a><p>
 			</form>
 		<script src="scripts/jquery-1.10.2.min.js"></script>
 		<script src="scripts/registration_validation.js"></script>

@@ -54,7 +54,11 @@ if(isset($_GET['login'])) {
 				$error .= 'Username is already taken';
 				include 'register.html.php';
 				exit();
-			} 
+			} elseif($password != $password_repeat) {
+				$error .= 'Passwords do not match.';
+				include 'register.html.php';
+				exit();
+			}
 		}
 		
 		$sql = 'INSERT INTO user (username,email,password) VALUES

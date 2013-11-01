@@ -6,6 +6,7 @@ function PrintHeader($P) { ?>
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
     <link href="http://www.yoursmartsocket.com/SmartSocket/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="http://www.yoursmartsocket.com/SmartSocket/styles/devices.css" rel="stylesheet"type="text/css" />
+	 <link rel="shortcut icon" href="http://www.yoursmartsocket.com/SmartSocket/images/favicon.ico" />
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/knockout-3.0.0.js"></script>
     <?php

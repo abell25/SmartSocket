@@ -4,7 +4,13 @@ body {
 	overflow: hidden;
 }
 
-form { padding: 20px; width: 400px; display: block; background: #FAFAFA; margin: 0 auto;}
+form { 
+	padding: 20px; 
+	width: 300px; 
+	display: block; 
+	background: #FAFAFA; 
+	margin: 0 auto;
+}
 
 input, textarea{
 	line-height: 25px;

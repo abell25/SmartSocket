@@ -2,7 +2,7 @@
 	include_once $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/includes/helpers.inc.php';
 	include 'template.php';
 	$P = array('title' => 'Login', 
-		   'css' => 'login.css');
+		   'css' => 'login_registeration.css');
 	PrintHeader($P);
 ?>
 	<form id="login_form" method="POST" action="?login">

@@ -4,7 +4,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/SmartSocket/includes/db_connection.php';
 
 if (isset($_GET['id'])) {
 	$id = $_GET['id'];
-	$result = mysqli_query($connection,'SELECT user_set_state from device where dev_id = "'.$id.'"');
+	$sql = "SELECT user_set_state from device where dev_id = '".$id."'";
+	$result = mysqli_query($connection,$sql);
 	
 	if (!$result){
 		$error = 'Error finding arduino state.';
@@ -12,8 +13,8 @@ if (isset($_GET['id'])) {
 		exit();
 	}
 	
-	$info = mysql_fetch_assoc($result);
-	$output = 'User State: ' .$info['user_set_state'];
+	$info = mysqli_fetch_array($result);
+	$output = 'User State: '.$info['user_set_state'];
 			 
 	echo $output;
 	include 'output.html.php';

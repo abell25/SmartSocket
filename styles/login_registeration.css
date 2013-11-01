@@ -103,3 +103,8 @@ p {
 a {
 	font-weight: bold;
 }
+
+#error_text {
+	color: red;
+	font-size: 120%;
+}

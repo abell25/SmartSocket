@@ -15,6 +15,7 @@ if (isset($_GET['id']))
 	$output 'User State: ' .$info['user_set_state'];
 			 
 	echo $output
+	include 'output.html.php';
 	exit();
 }
 ?>

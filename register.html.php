@@ -1,13 +1,10 @@
-<?php include_once $_SERVER['DOCUMENT_ROOT'] .
-		'/SmartSocket/includes/helpers.inc.php'; ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Registration</title>
-		<link type="text/css" rel="stylesheet" href="styles/registration.css"/>
-	</head>
-	<body>	
-		<div id="content">
+<?php 
+	include_once $_SERVER['DOCUMENT_ROOT'] .'/SmartSocket/includes/helpers.inc.php'; 
+	include 'template.php';
+	$P = array('title' => 'Login', 
+		   'css' => 'login.css');
+	PrintHeader($P);
+?>
 			<form id="registration_form" method="POST" action="?register">
 				<p id="error_text"></p>
 				
@@ -25,8 +22,7 @@
 				
 				<input type="submit" value="Register" id="submit_button"/>
 			</form>
-		</div>
 		<script src="scripts/jquery-1.10.2.min.js"></script>
 		<script src="scripts/registration_validation.js"></script>
-	</body>
+  </body>
 </html>

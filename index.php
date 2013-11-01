@@ -37,6 +37,22 @@ if(isset($_GET['login'])) {
 		$password = mysqli_real_escape_string($connection, $_POST['password']);
 		
 		$output = 'Username: ' . $username . ' Email: ' . $email . ' Password: ' . $password;
+		$error = '';
+		
+		$sql = 'SELECT * FROM user WHERE username="'.$username.'"';
+		$result = mysqli_query($connection, $sql);
+		if (!$result){
+			$error .= 'Error seeing if username already exists in the DB.';
+			include 'output.html.php';
+			exit();
+		} else {
+			$num = mysqli_num_rows($result);
+			if($num > 0) {
+				$error .= 'Username is already taken';
+				include 'register.html.php';
+				exit();
+			} 
+		}
 		
 		$sql = 'INSERT INTO user (username,email,password) VALUES
 				("'. $username .'","'. $email .'","'. $password .'")';

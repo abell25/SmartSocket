@@ -6,7 +6,7 @@
 	PrintHeader($P);
 ?>
 			<form id="registration_form" method="POST" action="?register">
-				<p id="error_text"></p>
+				<p id="error_text"><?php echo '<br/>'.$error ?></p>
 				
 				<label for="username-id">Username:</label>
 				<input id="username-id" type="text" name="username" required="required" autofocus="autofocus" /><br/><br/>

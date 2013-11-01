@@ -7,11 +7,12 @@ if(isset($_GET['login'])) {
 		$password = mysqli_real_escape_string($connection, $_POST['password']);
 		
 		$output = 'Username: ' . $username . '<br/>Password: ' . $password;
+		$error = '';
 		
 		$sql = 'SELECT * FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
 		$result = mysqli_query($connection, $sql);
 		if (!$result){
-			$error = 'Error seeing if user exists in the DB.';
+			$error .= 'Error seeing if user exists in the DB.';
 			include 'output.html.php';
 			exit();
 		}	
@@ -21,7 +22,8 @@ if(isset($_GET['login'])) {
 		if($num > 0) {
 			$output .= '<br/>Access Granted!';
 		} else {
-			$output .= '<br/>Access Denied! Please register first...';
+			include 'login.html.php';
+			$error .= '<br/>Access Denied. username/password combination do not match.';
 		}
 		
 		include 'output.html.php';

@@ -22,8 +22,9 @@ if(isset($_GET['login'])) {
 		if($num > 0) {
 			$output .= '<br/>Access Granted!';
 		} else {
+			$error .= 'Access Denied. username/password combination do not match.';
 			include 'login.html.php';
-			$error .= '<br/>Access Denied. username/password combination do not match.';
+			exit();
 		}
 		
 		include 'output.html.php';

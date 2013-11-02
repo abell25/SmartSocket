@@ -6,12 +6,12 @@ $(function() {
 
 function Device(data) {
     var self = this;
-    self.dev_id = data.dev_id;
-    self.nickname = data.nickname;
-    self.schedule = data.schedule;
-    self.max_power_usage = data.max_power_usage;
-    self.max_cost = data.max_cost;
-    self.user_set_state = data.user_set_state;
+    self.dev_id = ko.observable(data.dev_id);
+    self.nickname = ko.observable(data.nickname);
+    self.schedule = ko.observable(data.schedule);
+    self.max_power_usage = ko.observable(data.max_power_usage);
+    self.max_cost = ko.observable(data.max_cost);
+    self.user_set_state = ko.observable(data.user_set_state);
 }
 
 function DeviceViewModel() {

@@ -9,8 +9,7 @@ if(isset($_GET['login'])) {
 		$output = 'Username: ' . $username . '<br/>Password: ' . $password;
 		$error = '';
 		
-		$sql = sprintf("SELECT * FROM user WHERE username='%s' and password='%s'",
-			mysql_real_escape_string($username), mysql_real_escape_string($password));
+		$sql = sprintf("SELECT * FROM user WHERE username='%s' and password='%s'",$username, $password);
 
 		$result = mysqli_query($connection, $sql);
 		if (!$result){

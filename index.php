@@ -21,7 +21,7 @@ if(isset($_GET['login'])) {
 
 		$num = mysqli_num_rows($result);
 		if($num > 0) {
-			$user = mysql_fetch_assoc($result);
+			$user = mysqli_fetch_assoc($result);
 			header('Location: http://www.yoursmartsocket.com/SmartSocket/getDevices.php?user_id=' . $user['user_id']);
 		} else {
 			$error .= 'Access Denied. username/password combination do not match.';

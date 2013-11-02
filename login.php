@@ -1,6 +1,7 @@
 <?php
   include 'template.php';
-  PrintHeader(array('title' => 'Login'));
+$P = array('title' => 'Login');
+  PrintHeader($P);
 
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -27,4 +28,4 @@ else {
 <?php echo $error; ?>
 
 
-<?php PrintFooter(); ?>
+<?php PrintFooter($P); ?>

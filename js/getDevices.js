@@ -12,6 +12,24 @@ function Device(data) {
     self.max_power_usage = ko.observable(data.max_power_usage);
     self.max_cost = ko.observable(data.max_cost);
     self.user_set_state = ko.observable(data.user_set_state);
+    self.IsChecked = ko.computed({
+	read: function() {
+	    console.log("IsChecked called!");
+	    if (+self.user_set_state() == "2") {
+		//todo: check schedule
+		return false;
+	    } else if (+self.user_set_state() == "1") {
+		return true;
+	    } else {
+		return false;
+	    }
+	},
+	write: function(val) {
+	    console.log("write called! val: " + val);
+	    self.user_set_state(val?"1":"0")
+	}
+    });
+    self.override = ko.observable(+self.user_set_state() >= 2);
 }
 
 function DeviceViewModel() {

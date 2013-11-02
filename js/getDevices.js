@@ -19,6 +19,7 @@ function Device(data) {
 	    } else if (+self.user_set_state() == "1") {
 		return true;
 	    } else {
+		self.user_set_state("0");
 		return false;
 	    }
 	},
@@ -39,6 +40,16 @@ function Device(data) {
 	    }
 	}
     }); 
+    self.nickname.subscribe(function() { self.onChange(); });
+    self.max_cost.subscribe(function() { self.onChange(); });
+    self.user_set_state.subscribe(function() { self.onChange(); });
+    self.use_schedule.subscribe(function() { self.onChange(); });
+}
+Device.prototype = {
+    onChange: function() { 
+	console.log("Postback: " + ko.toJSON(this)); 
+	updateDevice(this);
+    }
 }
 
 function DeviceViewModel() {
@@ -46,7 +57,7 @@ function DeviceViewModel() {
 
     self.devices = ko.observableArray(the_devices);
 
-    self.pull = function() {
+    self.refresh = function() {
 	console.log("user_id is " + user_id);
 	$.ajax({
 	    url: "http://yoursmartsocket.com/SmartSocket/php_scripts/getDevices.php",
@@ -58,20 +69,6 @@ function DeviceViewModel() {
 	    self.devices(resp);
 	});
     };
-
-    self.push = function(device) {
-	console.log("dev_id is " + device.dev_id);
-	$.ajax({
-	    type: "POST",
-	    url: "http://yoursmartsocket.com/SmartSocket/php_scripts/updateDevices.php",
-	    dataType: "json",
-	    context: this,
-	    data: JSON.stringify(device)
-	}).done(function(resp) {
-	    console.log("update ajax returned! resp = [" + resp + "]");
-	});
-    };
-
 }
 
 function getStateFromSchedule(device) {
@@ -79,3 +76,17 @@ function getStateFromSchedule(device) {
     //TODO: get status by reading schedule and calculating
     return false;
 }
+
+function updateDevice(device) {
+    data = JSON.parse(ko.toJSON(device));
+    console.log("GETing!  dev_id is " + data.dev_id);
+	$.ajax({
+	    type: "GET",
+	    url: "http://yoursmartsocket.com/SmartSocket/php_scripts/updateDevices.php",
+	    dataType: "json",
+	    context: this,
+	    data: data
+	}).done(function(resp) {
+	    console.log("update ajax returned! resp = [" + resp + "]");
+	});
+    };

@@ -14,10 +14,8 @@ function Device(data) {
     self.user_set_state = ko.observable(data.user_set_state);
     self.IsChecked = ko.computed({
 	read: function() {
-	    console.log("IsChecked called!");
 	    if (+self.user_set_state() == "2") {
-		//todo: check schedule
-		return false;
+		return getStateFromSchedule(self);
 	    } else if (+self.user_set_state() == "1") {
 		return true;
 	    } else {
@@ -25,11 +23,22 @@ function Device(data) {
 	    }
 	},
 	write: function(val) {
-	    console.log("write called! val: " + val);
-	    self.user_set_state(val?"1":"0")
+	    self.user_set_state((val)?"1":"0")
 	}
     });
-    self.override = ko.observable(+self.user_set_state() >= 2);
+    self.use_schedule = ko.computed({
+	read: function() {
+	    return (+self.user_set_state() >= 2);
+	},
+	write: function(val) {
+	    if (val) {
+		self.user_set_state("2");
+	    } else {
+		var on = getStateFromSchedule(self);
+		self.user_set_state(on?"1":"0");
+	    }
+	}
+    }); 
 }
 
 function DeviceViewModel() {
@@ -63,4 +72,10 @@ function DeviceViewModel() {
 	});
     };
 
+}
+
+function getStateFromSchedule(device) {
+    console.log('schedule says: false');
+    //TODO: get status by reading schedule and calculating
+    return false;
 }

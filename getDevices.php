@@ -10,8 +10,8 @@ PrintHeader($P);
 <div class="content-section">
   <h2>Device <span data-bind="text: dev_id"></span> - <input type="text" data-bind="value: nickname" /></h2>
   <div class="onoffswitch" >
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id }, checked: IsChecked">
-    <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id }">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked">
+    <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id() }">
       <div class="onoffswitch-inner"></div>
       <div class="onoffswitch-switch"></div>
     </label>
@@ -20,7 +20,7 @@ PrintHeader($P);
   <h1>Max Cost: </h1>
   <input type="number" data-bind="value: max_cost" /></span>
   <span class="override">
-    <label for="override">Use schedule</label><input type="checkbox" data-bind="checked: override"/>
+    <label for="override">Use schedule</label><input type="checkbox" data-bind="checked: use_schedule"/>
   </span>
 </div>
 </ul>

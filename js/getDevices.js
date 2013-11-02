@@ -43,7 +43,7 @@ function Device(data) {
     self.nickname.subscribe(function() { self.onChange(); });
     self.max_cost.subscribe(function() { self.onChange(); });
     self.user_set_state.subscribe(function() { self.onChange(); });
-    self.use_schedule.subscribe(function() { self.onChange(); });
+    //self.use_schedule.subscribe(function() { self.onChange(); });
 }
 Device.prototype = {
     onChange: function() { 

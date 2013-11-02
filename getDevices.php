@@ -1,14 +1,14 @@
 <?php
-//echo "getting sockets for user..<br />";
 include 'template.php';
 $P = array('title' => 'Devices', 
 	   'css' => 'getDevices.css',
 	   'js'  => 'getDevices.js');
 PrintHeader($P);
 ?>
+
 <ul data-bind="foreach: devices">
 <div class="content-section">
-  <h2>Device <span data-bind="text: dev_id"></span> - <input type="text" data-bind="value: nickname" /></h2>
+  <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" /></h2>
   <div class="onoffswitch" >
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked">
     <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id() }">
@@ -24,9 +24,7 @@ PrintHeader($P);
   </span>
 </div>
 </ul>
-<?php
-PrintFooter($P);
-?>
+<?php PrintFooter($P); ?>
 <script>
 user_id = <?php echo $_GET['user_id'] ?>;
 the_data = <?php include 'php_scripts/getDevices.php'; ?>;

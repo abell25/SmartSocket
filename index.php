@@ -9,7 +9,9 @@ if(isset($_GET['login'])) {
 		$output = 'Username: ' . $username . '<br/>Password: ' . $password;
 		$error = '';
 		
-		$sql = 'SELECT * FROM user WHERE username="'.$username.'" AND password="'.$password.'"';
+		$sql = sprintf("SELECT * FROM user WHERE username='%s' and password='%s'",
+			mysql_real_escape_string($username), mysql_real_escape_string($password));
+
 		$result = mysqli_query($connection, $sql);
 		if (!$result){
 			$error .= 'Error seeing if user exists in the DB.';
@@ -21,6 +23,8 @@ if(isset($_GET['login'])) {
 		$num = mysqli_num_rows($result);
 		if($num > 0) {
 			$output .= '<br/>Access Granted!';
+			$user = mysql_fetch_assoc($result);
+			header('Location: http://www.yoursmartsocket.com/SmartSocket/getDevices.php?user_id=' . $user['user_id']);
 		} else {
 			$error .= 'Access Denied. username/password combination do not match.';
 			include 'login.html.php';

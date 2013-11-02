@@ -22,7 +22,6 @@ if(isset($_GET['login'])) {
 
 		$num = mysqli_num_rows($result);
 		if($num > 0) {
-			$output .= '<br/>Access Granted!';
 			$user = mysql_fetch_assoc($result);
 			header('Location: http://www.yoursmartsocket.com/SmartSocket/getDevices.php?user_id=' . $user['user_id']);
 		} else {
@@ -42,6 +41,7 @@ if(isset($_GET['login'])) {
         $username = mysqli_real_escape_string($connection, $_POST['username']);
 		$email = mysqli_real_escape_string($connection, $_POST['email']);
 		$password = mysqli_real_escape_string($connection, $_POST['password']);
+		$password_repeat = mysqli_real_escape_string($connection, $_POST['password_repeat']);
 		
 		$output = 'Username: ' . $username . ' Email: ' . $email . ' Password: ' . $password;
 		$error = '';

@@ -6,6 +6,7 @@
 	PrintHeader($P);
 ?>
 	<form id="login_form" method="POST" action="?login">
+		<p id="error_text"><?php echo $error ?></p><br/>
 		<label for="username-id">Username:</label>
 		<input id="username-id" type="text" name="username" autofocus="autofocus" required="required"/><br/><br/>
 		

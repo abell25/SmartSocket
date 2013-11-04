@@ -1,6 +1,20 @@
+var the_plot;
 $(function() {
     console.log("Started..");
-
+    the_plot = $.jqplot('usage', [the_points], {
+	title:'Current Usage',
+	axes:{
+	    xaxis:{label:'date',
+		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		   renderer:$.jqplot.DateAxisRenderer
+	    },
+            yaxis:{label:'amps',
+		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		   min:0, max:1000
+	    }
+	},
+	series:[{lineWidth:4, markerOptions:{style:'square'}}]
+    });
     ko.applyBindings(new ReadingViewModel());
 });
 

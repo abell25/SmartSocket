@@ -1,0 +1,29 @@
+p {
+	color: #2EBBE8;
+	text-align:center;
+	font-size:120%;
+	font-weight:bold;
+	width: 400px; 
+}
+
+#success {
+	color: #56C75F;
+}
+
+a {
+	font-weight: bold;
+	color: #2EBBE8;
+}
+
+#error_text {
+	color: red;
+	font-size: 120%;
+}
+
+#content {
+	padding: 20px; 
+	width: 400px; 
+	background: #FAFAFA; 
+	margin: 0 auto;
+	display: block;
+}

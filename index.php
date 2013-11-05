@@ -37,12 +37,12 @@ if(isset($_GET['login'])) {
     }
 } elseif (isset($_GET['register'])) {
     if('POST' == $_SERVER['REQUEST_METHOD']) {
-        $username = mysqli_real_escape_string($connection, $_POST['username']);
+                $username = mysqli_real_escape_string($connection, $_POST['username']);
 		$email = mysqli_real_escape_string($connection, $_POST['email']);
 		$password = mysqli_real_escape_string($connection, $_POST['password']);
 		$password_repeat = mysqli_real_escape_string($connection, $_POST['password_repeat']);
 		
-		$output = 'Username: ' . $username . ' Email: ' . $email . ' Password: ' . $password;
+		$output = '';
 		$error = '';
 		
 		$sql = 'SELECT * FROM user WHERE username="'.$username.'"';
@@ -74,6 +74,9 @@ if(isset($_GET['login'])) {
 			exit();
 		}
 
+		$output .= '<p id="success">Congratulations '. $username .' you have successfully
+						been registered. Please visit the <a href="?login">login</a> page.</p>';
+		$title = 'Successful Registration';
 		include 'output.html.php';
 		exit();
     } else {

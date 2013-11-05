@@ -19,6 +19,15 @@ function PrintHeader($P) { ?>
   <body>
     <div id="wrapper">
       <div id="header">
+	  	  	<div id="welcome">
+			<p>Welcome, 
+				<?php 
+				  session_start(); 
+				  echo $_SESSION['username']; 
+				?>
+			</p>
+			<a href="logout.php" title="Logout">[Logout]</a>
+		</div>
 	<div id="navbar">
 	  <div id="logo"></div>
 	  <a href="index.html" title="Home" id="home"></a>
@@ -92,3 +101,33 @@ function attr($P, $property) {
   }
 }
 ?>
+
+<?php
+function PrintSimpleHeader($P) { ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+		<link href="http://www.yoursmartsocket.com/SmartSocket/styles/style.css" rel="stylesheet" type="text/css" />
+		<link href="http://www.yoursmartsocket.com/SmartSocket/styles/devices.css" rel="stylesheet"type="text/css" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/knockout-3.0.0.js"></script>
+		<?php
+		if (array_key_exists('css', $P)) {
+		  echo '<link href="/Practice/SmartSocket/styles/'. $P['css'] .'" rel="stylesheet" type="text/css" />';
+		}
+		if (array_key_exists('js', $P)) {
+		  echo '<script type="text/javascript" src="/Practice/SmartSocket/scripts/' . $P['js'] .'"></script>';
+		}
+		?>
+		<title><?php attr($P, 'title');  ?></title>
+	</head>
+
+  <body>
+	<div id="wrapper">
+		<div id="header">
+			<img src="images/logo-nonav.png" alt="Alternate logo" style="width:1080px; height:180px; display:inline-block;">
+		</div>
+	
+<?php } ?>

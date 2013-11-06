@@ -3,7 +3,7 @@
 	include 'template.php';
 	$P = array('title' => "'". $title ."'", 
 		   'css' => 'output.css');
-	PrintHeader($P);
+	PrintSimpleHeader($P);
 ?>
 		<p>
 			<?php echo $error; ?>

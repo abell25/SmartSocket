@@ -3,7 +3,7 @@
 	include 'template.php';
 	$P = array('title' => 'Login', 
 		   'css' => 'login_registeration.css');
-	PrintHeader($P);
+	PrintSimpleHeader($P);
 ?>
 			<form id="registration_form" method="POST" action="?register">
 				<p id="error_text"><?php echo $error ?></p><br/>

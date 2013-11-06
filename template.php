@@ -118,10 +118,10 @@ function PrintSimpleHeader($P) { ?>
 		<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/knockout-3.0.0.js"></script>
 		<?php
 			if (array_key_exists('css', $P)) {
-			  echo '<link href="/SmartSocket/styles/'. $P['css'] .'" rel="stylesheet" type="text/css" />';
+			  echo '<link href="http://www.yoursmartsocket.com/SmartSocket/styles/'. $P['css'] .'" rel="stylesheet" type="text/css" />';
 			}
 			if (array_key_exists('js', $P)) {
-			  echo '<script type="text/javascript" src="/SmartSocket/scripts/' . $P['js'] .'"></script>';
+			  echo '<script type="http://www.yoursmartsocket.com/SmartSocket/scripts/' . $P['js'] .'"></script>';
 			}
 		?>
 		<title><?php attr($P, 'title');  ?></title>

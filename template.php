@@ -1,5 +1,10 @@
 <?php
-function PrintHeader($P) { ?>
+function PrintHeader($P) { 
+	session_start();
+	 if(empty($_SESSION['user_id']) && empty($_SESSION['username'])) {
+		header('Location: /SmartSocket/?login');
+	 }
+?>
 <!DOCTYPE html>
 <html>
   <head>

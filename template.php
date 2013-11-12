@@ -1,9 +1,12 @@
 <?php
 function PrintHeader($P) { 
-	session_start();
-	 if(empty($_SESSION['user_id']) && empty($_SESSION['username'])) {
-		header('Location: /SmartSocket/?login');
-	 }
+function PrintHeader($P) { 
+ if(!isset($_SESSION)){
+    session_start();
+ }
+ if(empty($_SESSION['user_id']) && empty($_SESSION['username'])) {
+	header('Location: /Practice/SmartSocket/?login');
+ }
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +46,7 @@ function PrintHeader($P) {
 	    <ul>
 	      <li><a href="devices.html" title="Devices">Devices</a></li>
 	      <li><a href="schedule.html" title="Schedule">Schedule</a></li>
-	      <li><a href="account.html" title="Account">Account</a></li>
+	      <li><a href="index.php?account<?php echo "&id=".$_SESSION['user_id'];  ?>" title="Account">Account</a></li>
 	    </ul>
 	  </div>
 	</div>

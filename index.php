@@ -86,6 +86,51 @@ if(isset($_GET['login'])) {
 		include 'register.html.php';
 		exit();
     }
+} elseif (isset($_GET['account'])) {
+	if('POST' == $_SERVER['REQUEST_METHOD']) {
+		session_start();
+		$user_id = $_SESSION['user_id'];
+        $username = mysqli_real_escape_string($connection, $_POST['username']);
+		$email = mysqli_real_escape_string($connection, $_POST['email']);
+		//$password = mysqli_real_escape_string($connection, $_POST['password']);
+		//$password_repeat = mysqli_real_escape_string($connection, $_POST['password_repeat']);
+		$power_cost = mysqli_real_escape_string($connection, $_POST['power_cost']);
+		
+		$error = '';
+		$success = '';
+		$sql = sprintf("UPDATE user SET username='%s',email='%s',power_cost='%s' WHERE user_id='%s';",$username,$email,$power_cost,$user_id);
+
+		$result = mysqli_query($connection, $sql);
+		if (!$result){
+			$error .= 'Error assigning values to user.';
+			include 'account.html.php';
+			exit();
+		}	
+		$success.="Successfully updated account info";
+		include 'account.html.php';
+		exit();
+    } else {
+		$error = '';
+		$success = '';
+		session_start();
+		$sql = sprintf("SELECT username,email,power_cost FROM user WHERE user_id='%s'",$_SESSION['user_id']);
+		$result = mysqli_query($connection,$sql);
+		
+		if (!$result){
+			$error = 'Error finding users info.';
+			include 'account.html.php';
+			exit();
+		}
+	
+		$info = mysqli_fetch_assoc($result);
+		
+		$username = $info['username'];
+		$email = $info['email'];
+		$power_cost = $info['power_cost'];
+		
+        include 'account.html.php';
+		exit();
+    }
 } else {  
     include '404.html.php';  // No page found
 }

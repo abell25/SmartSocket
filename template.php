@@ -1,6 +1,5 @@
 <?php
 function PrintHeader($P) { 
-function PrintHeader($P) { 
  if(!isset($_SESSION)){
     session_start();
  }

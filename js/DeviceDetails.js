@@ -1,4 +1,5 @@
 var the_plot;
+var vm;
 $(function() {
     console.log("Started..");
     
@@ -9,8 +10,8 @@ $(function() {
     $('#end_date').val(end_date);
 
     RenderPlot();
-
-    ko.applyBindings(new ReadingViewModel());
+    vm = new ReadingViewModel();
+    ko.applyBindings(vm);
 });
 
 function Reading(data) {
@@ -48,6 +49,7 @@ function GetPoints() {
 	    the_points = the_data.map(function(el) { 
 		return [el.time_id, el.amps]; 
 	    });
+	    vm.readings(the_readings);
 	    RenderPlot();
 	});
     return false;

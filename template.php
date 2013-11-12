@@ -94,13 +94,15 @@ function PrintHeader($P) {
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/knockout-3.0.0.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jquery.jqplot.min.js"></script>
-<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.dateAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.dateAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/date.js"></script>
     <?php
     if (array_key_exists('js', $P)) {
       echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/' . $P['js'] .'"></script>';
     }
     ?>
 <?php } ?>
+
 
 <?php 
 function attr($P, $property) {

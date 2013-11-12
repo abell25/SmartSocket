@@ -7,6 +7,13 @@ $P = array('title' => 'Devices',
 PrintHeader($P);
 ?>
 <h2>Device Details</h2>
+<div id=daterange>
+  <form>
+    Start <input type="date" name="start_date" />
+    End <input type="date" name="end_date" />
+    <input type="submit" value="Update Readings" />
+  </form>
+</div>
 <div id="usage" style="height:300px;width:400px;"></div>
 <table>
 <thead>
@@ -22,16 +29,14 @@ PrintHeader($P);
 </tbody>
 </table>
 <?php PrintFooter($P); ?>
+
 <script>
+var start_date = (5).days().ago().toString('yyyy-MM-dd hh:mm:ss')
+var end_date = Date.parse('today').toString('yyyy-MM-dd hh:mm:ss');
+var params = "start_date=" + start_date + "&end_date=" + end_date;
+
 dev_id = <?php echo $_GET['dev_id']; ?>;
 the_data = <?php include 'php_scripts/getReadings.php'; ?>;
 the_readings = the_data.map(function(el) { return new Reading(el); });
-the_raw_points = the_data.map(function(el) { return [el.time_id, el.amps]; });
-//TODO: this is a hack.  need to modify getReadings sql to filter by date..
-the_points = [];
-for (i=0;i < the_raw_points.length;i++){
-  if ((i%400)==0) {
-    the_points.push(the_raw_points[i]);
-  }
-}
+the_points = the_data.map(function(el) { return [el.time_id, el.amps]; });
 </script>

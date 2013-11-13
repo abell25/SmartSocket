@@ -28,13 +28,7 @@
 </div>
 <div id="sidebar" class="shadow">
 	<h1>Devices</h1>
-	<ul>
-		<li><button type="button" name="device1">device1</button><li>
-		<li><button type="button" name="device2">device2</button><li>
-		<li><button type="button" name="device3">device3</button><li>
-	<ul>
-</div>
-
-
+		<?php echo $devices ?>
 <?php PrintFooter($P); ?>
+	
 	

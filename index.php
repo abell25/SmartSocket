@@ -113,21 +113,32 @@ if(isset($_GET['login'])) {
 		$error = '';
 		$success = '';
 		session_start();
-		$sql = sprintf("SELECT username,email,power_cost FROM user WHERE user_id='%s'",$_SESSION['user_id']);
-		$result = mysqli_query($connection,$sql);
+		$user_id = $_SESSION['user_id'];
 		
-		if (!$result){
-			$error = 'Error finding users info.';
+		$info_query = sprintf("SELECT username,email,power_cost FROM user WHERE user_id='%s'",$user_id);
+		$info_result = mysqli_query($connection,$info_query);
+		if (!$info_result){
+			$error .= 'Error finding users info.';
 			include 'account.html.php';
 			exit();
 		}
-	
-		$info = mysqli_fetch_assoc($result);
-		
+		$info = mysqli_fetch_assoc($info_result);
 		$username = $info['username'];
 		$email = $info['email'];
 		$power_cost = $info['power_cost'];
 		
+		$devices_query = sprintf("SELECT dev_id,nickname FROM device WHERE user_id='%s'",$user_id);
+		$devices_result = mysqli_query($connection,$devices_query);
+		if (!$devices_result){
+			$error .= 'Error finding users device info.';
+			include 'account.html.php';
+			exit();
+		}
+		$devices = '';
+		while($row = mysqli_fetch_assoc($devices_result)) {
+			$devices .= '<div class="devices"><button type="button" name="'.$row["dev_id"].'">'.$row["nickname"].'</button></div>';
+		}
+
         include 'account.html.php';
 		exit();
     }

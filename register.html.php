@@ -17,7 +17,7 @@
 				<label for="password1-id">Password:</label>
 				<input id="password1-id" class="text-input" required="required" type="password" name="password" /><br/><br/>
 				
-				<label for="password2-id">Retype Password:</label>
+				<label for="password2-id">Confirm password:</label>
 				<input id="password2-id" class="text-input" required="required" type="password" name="password_repeat" /><br/><br/>
 				
 				<input type="submit" value="Register" id="submit_button"/><p>Already have an account?<a href="?login"> Login</a><p>

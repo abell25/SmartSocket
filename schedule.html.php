@@ -1,13 +1,3 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-	<link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<link href="css/schedule.css" rel="stylesheet" type="text/css" />
-
-	<script src="js/dhtmlxscheduler.js" type="text/javascript"></script>
-</head>
--->
 <?php
 	include 'template.php';
 	$P = array('title' => 'Scheduler', 
@@ -51,8 +41,12 @@
 
 	<?php session_start(); ?>
 	<?php $_GET['user_id'] = $_SESSION['user_id']; ?>
-	var devices = <?php include 'php_scripts/getDevices.php'; ?>
+	var devices_json = <?php include 'php_scripts/getDevices.php'; ?>
+	var devices = [];
 	
+	for (var i=0; i < devices_json.length; i++) {
+		devices[i] = {key:devices_json[i].dev_id, label:devices_json[i].nickname};
+	}
 	
 	scheduler.config.lightbox.sections=[
 		{name:"device", height:40, map_to:"event_title", type:"select" , options:devices, focus:true},

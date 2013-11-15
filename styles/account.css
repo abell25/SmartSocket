@@ -174,3 +174,15 @@ button:hover {
 #submit_holder, .devices {
 	text-align: center;
 }
+
+#newDevice, #saveButton{
+	background: #00E600;
+}
+
+#newDevice:hover, #saveButton:hover{
+	background: #00E600;
+	color: #FFFFFF;
+}
+
+
+h2 {text-decoration:underline}

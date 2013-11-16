@@ -2,6 +2,7 @@
 	if('POST' == $_SERVER['REQUEST_METHOD']) {
 		session_start();
 		$user_id = $_SESSION['user_id'];
+		$devices = getDevices($user_id);
         $username = mysqli_real_escape_string($connection, $_POST['username']);
 		$email = mysqli_real_escape_string($connection, $_POST['email']);
 		$power_cost = mysqli_real_escape_string($connection, $_POST['power_cost']);
@@ -66,7 +67,6 @@
 			exit();
 		}	
 		$success.="Successfully updated account info";
-		$devices = getDevices($user_id);
 		include 'account.html.php';
 		exit();
     } else {
@@ -74,6 +74,7 @@
 		$success = '';
 		session_start();
 		$user_id = $_SESSION['user_id'];
+		$devices = getDevices($user_id);
 		
 		$info_query = sprintf("SELECT username,email,power_cost FROM user WHERE user_id='%s'",$user_id);
 		$info_result = mysqli_query($connection,$info_query);
@@ -87,7 +88,6 @@
 		$username = $info['username'];
 		$email = $info['email'];
 		$power_cost = $info['power_cost'];
-		$devices = getDevices($user_id);
 
         include 'account.html.php';
 		exit();

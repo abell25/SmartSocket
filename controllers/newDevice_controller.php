@@ -2,6 +2,7 @@
 	if('POST' == $_SERVER['REQUEST_METHOD']) {
 		session_start();
 		$user_id = $_SESSION['user_id'];
+		$devices = getDevices($user_id);
 		$dev_id = mysqli_real_escape_string($connection, $_POST['dev_id']);
         $nickname = mysqli_real_escape_string($connection, $_POST['nickname']);
 		$max_power_usage = mysqli_real_escape_string($connection, $_POST['max_power_usage']);
@@ -45,7 +46,6 @@
 			exit();
 		}	
 		$success.="Successfully added ".$nickname;
-		$devices = getDevices($user_id);
 		include 'newDevice.html.php'; // redirect to the device page
 		exit();
     } else {

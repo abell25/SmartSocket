@@ -11,7 +11,7 @@ CREATE TABLE user (
 );
 
 CREATE TABLE device (
-	dev_id SMALLINT NOT NULL PRIMARY KEY,
+	dev_id SMALLINT NOT NULL,
 	user_id SMALLINT NOT NULL,
 	nickname varchar(50) NOT NULL,
 	resistance SMALLINT NULL,
@@ -19,6 +19,7 @@ CREATE TABLE device (
 	schedule TEXT NULL,
 	max_power_usage FLOAT NULL,
 	max_cost FLOAT NULL,
+	PRIMARY KEY (dev_id),
 	FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 

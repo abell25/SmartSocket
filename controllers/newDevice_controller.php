@@ -46,14 +46,14 @@
 			exit();
 		}	
 		$success.="Successfully added ".$nickname;
-		include 'newDevice.html.php'; // redirect to the device page
+		header('Location: index.php?deviceInfo&dev_id=' . $dev_id);
 		exit();
     } else {
 		$error = '';
 		$success = '';
 		session_start();
 		$user_id = $_SESSION['user_id'];
-
+		
 		$dev_id = '';
 		$nickname = '';
 		$max_power_usage = '';
@@ -70,17 +70,17 @@
 		$devices_result = mysqli_query($connection,$devices_query);
 		if (!$devices_result){
 			$title = 'Finding Devices Error';
-			$error = 'Error finding users device info.';
+			$output = 'Error finding users device info.';
 			include 'output.html.php';
 			exit();
 		}
-		
-		//TODO: Add links to the divs to go to a specifc device page (specifc device page will be easier in that it will only have values that can be updated (not like password))
 		$result = '';
 		while($row = mysqli_fetch_assoc($devices_result)) {
-			$result .= '<div class="devices"><button type="button" name="'.$row["dev_id"].'">'.$row["nickname"].'</button></div>';			
+			$result .= '<div class="devices"><button type="button".
+						name="'.$row["dev_id"].'".
+						onClick="window.location.href=\'index.php?deviceInfo&dev_id='.$row["dev_id"].'\'">'.
+						$row["nickname"].'</button></div>';	
 		}
-		
 		return $result;
 	}
 ?>

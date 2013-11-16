@@ -9,6 +9,8 @@ if(isset($_GET['login'])) {
 	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/account_controller.php';
 } elseif (isset($_GET['newDevice'])) {
 	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/newDevice_controller.php';
+} elseif (isset($_GET['deviceInfo'])) {
+	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/deviceInfo_controller.php';
 } else {  
     include '404.html.php';  // No page found
 }

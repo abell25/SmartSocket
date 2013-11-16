@@ -83,7 +83,7 @@ label {
 	width: 155px;
 }
 
-input[type=submit] {
+input[type=submit], #delete, #confirm, #delete_confirm {
 	width: auto;
 	padding: 9px 15px;
 	background: #2EBBE8;
@@ -184,4 +184,32 @@ button:hover {
 	color: #FFFFFF;
 }
 
+#delete {
+	background: #FF0606;
+	float:right;
+}
+
+#delete:hover, #delete_confirm:hover{
+	background: #FF0606;
+}
+
 h2 {text-decoration:underline}
+
+
+
+#confirmation_div {
+	margin:auto;
+	padding:20px;
+}
+
+#delete_confirm {
+	background: #FF0606;
+}
+
+.cushion_up {
+	margin-top: 10px;
+}
+
+#content-section-confirm {
+	width:auto;
+}

@@ -49,6 +49,11 @@
 			include 'account.html.php';
 			exit();
 		}
+		if($dev_id > 65535 ) {
+			$error .= 'Device ID must be less then 65535 (smallint)';
+			include 'account.html.php';
+			exit();
+		}
 		
 		$sql = "UPDATE user SET"
 					." username='".$username."'"
@@ -102,13 +107,13 @@
 			$error = 'Error finding users device info.';
 			exit();
 		}
-		
-		//TODO: Add links to the divs to go to a specifc device page (specifc device page will be easier in that it will only have values that can be updated (not like password))
 		$result = '';
 		while($row = mysqli_fetch_assoc($devices_result)) {
-			$result .= '<div class="devices"><button type="button" name="'.$row["dev_id"].'">'.$row["nickname"].'</button></div>';			
+			$result .= '<div class="devices"><button type="button".
+						name="'.$row["dev_id"].'".
+						onClick="window.location.href=\'index.php?deviceInfo&dev_id='.$row["dev_id"].'\'">'.
+						$row["nickname"].'</button></div>';			
 		}
-		
 		return $result;
 	}
 ?>

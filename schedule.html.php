@@ -49,10 +49,14 @@
 	}
 	
 	scheduler.config.lightbox.sections=[
-		{name:"device", height:40, map_to:"event_title", type:"select" , options:devices, focus:true},
+		{name:"device", height:40, map_to:"text", type:"select" , options:devices, focus:true},
 		{name:"time", height:72, type:"time", map_to:"auto"}
-	]
+	];
+	scheduler.locale.labels.section_device="Device Name";
 	
 	scheduler.init('scheduler_here', new Date(),"month");
-	scheduler.locale.labels.section_device="Device Name";
+	scheduler.load("scheduler/connector/connector.php");
+	
+	var dp = new dataProcessor("scheduler/connector/connector.php");
+	dp.init(scheduler);
 </script>

@@ -39,15 +39,16 @@
 	];
 */
 
-	<?php session_start(); ?>
-	<?php $_GET['user_id'] = $_SESSION['user_id']; ?>
-	var devices_json = <?php include 'php_scripts/getDevices.php'; ?>
+	<?php session_start(); ?>;
+	<?php $_GET['user_id'] = $_SESSION['user_id']; ?>;
+	var devices_json = <?php include 'php_scripts/getDevices.php'; ?>;
 	var devices = [];
 	
 	for (var i=0; i < devices_json.length; i++) {
-		devices[i] = {key:devices_json[i].dev_id, label:devices_json[i].nickname};
+		devices[i] = {key:devices_json[i].nickname, label:devices_json[i].nickname};
 	}
 	
+	scheduler.config.xml_date="%Y-%m-%d %H:%i";
 	scheduler.config.lightbox.sections=[
 		{name:"device", height:40, map_to:"text", type:"select" , options:devices, focus:true},
 		{name:"time", height:72, type:"time", map_to:"auto"}
@@ -55,8 +56,8 @@
 	scheduler.locale.labels.section_device="Device Name";
 	
 	scheduler.init('scheduler_here', new Date(),"month");
-	scheduler.load("scheduler/connector/connector.php");
+	scheduler.load("scheduler/connector.php");
 	
-	var dp = new dataProcessor("scheduler/connector/connector.php");
+	var dp = new dataProcessor("scheduler/connector.php");
 	dp.init(scheduler);
 </script>

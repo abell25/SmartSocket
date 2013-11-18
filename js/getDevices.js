@@ -101,14 +101,22 @@ function updateDevice(device) {
 var the_plot;
 function RenderPlot() {
     console.log("rendering!");
+
     if (the_plot) { the_plot.destroy(); }
     
-    the_plot = $.jqplot('usage', [the_points], {
+    var dateFormat = "%Y-%m-%d";
+    the_plot = $.jqplot('usage', the_points, {
 	title:'Current Usage',
 	axes:{
 	    xaxis:{label:'date',
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-		   renderer:$.jqplot.DateAxisRenderer
+		   renderer:$.jqplot.DateAxisRenderer,
+		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       angle: -30,
+                       formatString: dateFormat
+                   },
+		   
 	    },
             yaxis:{label:'amps',
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
@@ -147,7 +155,11 @@ function GetPoints(dev_id) {
 	    });
 	    i = i+1;
 	    console.log("i="+i);
-	    if (i == the_devices.length) { RenderPlot(); }
+	    if (i == the_devices.length) { 
+		var dev_ids = the_devices.map(function(x) { return x.dev_id(); });
+		the_points = dev_ids.map(function(x) { return the_points[x]; });
+		RenderPlot(); 
+	    }
 	    
 	});
     return false;

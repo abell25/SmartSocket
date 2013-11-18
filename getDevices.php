@@ -6,19 +6,19 @@ $P = array('title' => 'Devices',
 PrintHeader($P);
 ?>
 
-
-<div id=daterange>
+<div id="graphBox">
+  <div id=daterange>
     Start <input type="date" name="start_date" id="start_date" />
     End <input type="date" name="end_date" id="end_date" />
     <input type="submit" value="Update" onclick="GetAllPoints();"/>
+  </div>
+  <div id="usage" style="height:350px;width:500px;"></div>
 </div>
-<div id="usage" style="height:300px;width:400px;"></div>
-
 
 <!-- ko if: devices().length > 0-->
-<ul data-bind="foreach: devices">
+<ul data-bind="foreach: devices" id="deviceList">
 <div class="content-section" >
-  <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" /></h2>
+  <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" id="nickname" /></h2>
   <div class="onoffswitch">
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked">
     <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id() }">
@@ -28,7 +28,7 @@ PrintHeader($P);
   </div>
   <div class="link-separator"></div>
   <h1>Max Cost: </h1>
-  <input type="number" data-bind="value: max_cost" /></span>
+  <input type="number" data-bind="value: max_cost" id="maxcost" /></span>
   <span class="override">
     <label for="override">Use schedule</label><input type="checkbox" data-bind="checked: use_schedule"/>
   </span>

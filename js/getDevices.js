@@ -109,6 +109,7 @@ function RenderPlot() {
     var min = Math.min.apply(Math, the_points.map(function(x) { return Math.min.apply(Math, x.map(function(el) { return +el[1]; }) ); }));
     var max = Math.max.apply(Math, the_points.map(function(x) { return Math.max.apply(Math, x.map(function(el) { return +el[1]; }) ); }));
     var dateFormat = (((Date.parse(maxdate)-Date.parse(mindate))/1000/60/60) < 48)? "%H:%M" : "%Y-%m-%d";
+    var labels = dev_ids.map(function(id) { return "device #" + id; });
 
     the_plot = $.jqplot('usage', the_points, {
 	title:'Current Usage',
@@ -135,8 +136,8 @@ function RenderPlot() {
                    },
 	    }
 	},
-	series:[{lineWidth:4, markerOptions:{style:'square'}}],
-	legend: { show: false, location: 'se', labels: dev_ids },
+	//series:[{lineWidth:4, markerOptions:{style:'square'}}],
+	legend: { show: true, location: 'se', labels: labels },
         cursor: { show: true, zoom: true, showTooltip: false }
     });
 }

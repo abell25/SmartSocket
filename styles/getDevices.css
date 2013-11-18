@@ -1,4 +1,9 @@
-#turtle { color:red; }
-
 
 .override { float:right; }
+
+#graphBox {width:500px;margin-top:20px;margin-bottom:10px;float:left;}
+
+
+#deviceList {width:360px;float:right;}
+#nickname {width:100px;}
+#maxcost {width:40px;}

@@ -10,7 +10,7 @@ PrintHeader($P);
 <div id=daterange>
     Start <input type="date" name="start_date" id="start_date" />
     End <input type="date" name="end_date" id="end_date" />
-    <input type="submit" value="Update" onclick="GetPoints();"/>
+    <input type="submit" value="Update" onclick="GetAllPoints();"/>
 </div>
 <div id="usage" style="height:300px;width:400px;"></div>
 

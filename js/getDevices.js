@@ -103,12 +103,19 @@ function RenderPlot() {
     console.log("rendering!");
 
     if (the_plot) { the_plot.destroy(); }
-    
-    var dateFormat = "%Y-%m-%d";
+    var dev_ids = the_devices.map(function(x) { return x.dev_id(); });
+    var mindate = $('#start_date').val();
+    var maxdate = $('#end_date').val() + ' 23:59:59';
+    var min = Math.min.apply(Math, the_points.map(function(x) { return Math.min.apply(Math, x.map(function(el) { return +el[1]; }) ); }));
+    var max = Math.max.apply(Math, the_points.map(function(x) { return Math.max.apply(Math, x.map(function(el) { return +el[1]; }) ); }));
+    var dateFormat = (((Date.parse(maxdate)-Date.parse(mindate))/1000/60/60) < 48)? "%H:%M" : "%Y-%m-%d";
+
     the_plot = $.jqplot('usage', the_points, {
 	title:'Current Usage',
 	axes:{
-	    xaxis:{label:'date',
+	    xaxis:{
+		   min: mindate,
+		   max: maxdate,
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
 		   renderer:$.jqplot.DateAxisRenderer,
 		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
@@ -118,12 +125,19 @@ function RenderPlot() {
                    },
 		   
 	    },
-            yaxis:{label:'amps',
+            yaxis:{
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-		   min:0, max:1000
+		   min:min, 
+		   max:max,
+		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       formatString: "%d mA"
+                   },
 	    }
 	},
-	series:[{lineWidth:4, markerOptions:{style:'square'}}]
+	series:[{lineWidth:4, markerOptions:{style:'square'}}],
+	legend: { show: false, location: 'se', labels: dev_ids },
+        cursor: { show: true, zoom: true, showTooltip: false }
     });
 }
 var i = 0;
@@ -138,6 +152,7 @@ function GetAllPoints() {
 function GetPoints(dev_id) {
     var start = $('#start_date').val();
     var end = $('#end_date').val() + ' 23:59:59';
+   
     $.ajax({
 	url: "http://yoursmartsocket.com/SmartSocket/php_scripts/getReadings.php",
 	    dataType: "json",
@@ -145,7 +160,8 @@ function GetPoints(dev_id) {
 	data: {
 	       'dev_id': dev_id, 
 	    'start_time': start,
-	       'end_time': end
+	    'end_time': end,
+	    'num_points': 14
 	      }
 	}).done(function(resp) {
 	    console.log("ajax returned!dev_id="+dev_id);
@@ -158,6 +174,7 @@ function GetPoints(dev_id) {
 	    if (i == the_devices.length) { 
 		var dev_ids = the_devices.map(function(x) { return x.dev_id(); });
 		the_points = dev_ids.map(function(x) { return the_points[x]; });
+		the_points = the_points.filter(function(x) { return x.length > 0; });
 		RenderPlot(); 
 	    }
 	    

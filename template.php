@@ -97,6 +97,7 @@ function PrintHeader($P) {
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.dateAxisRenderer.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.canvasTextRenderer.min.js"></script>
+    <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.cursor.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/date.js"></script>
     <?php
     if (array_key_exists('js', $P)) {

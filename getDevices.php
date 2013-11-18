@@ -5,7 +5,17 @@ $P = array('title' => 'Devices',
 	   'js'  => 'getDevices.js');
 PrintHeader($P);
 ?>
-  <!-- ko if: devices().length > 0-->
+
+
+<div id=daterange>
+    Start <input type="date" name="start_date" id="start_date" />
+    End <input type="date" name="end_date" id="end_date" />
+    <input type="submit" value="Update" onclick="GetPoints();"/>
+</div>
+<div id="usage" style="height:300px;width:400px;"></div>
+
+
+<!-- ko if: devices().length > 0-->
 <ul data-bind="foreach: devices">
 <div class="content-section" >
   <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" /></h2>
@@ -34,4 +44,7 @@ var params = "start_date=" + start_date + "&end_date=" + end_date;
 user_id = <?php echo $_GET['user_id'] ?>;
 the_data = <?php include 'php_scripts/getDevices.php'; ?>;
 the_devices = the_data.map(function(el) { return new Device(el); });
+
+graph_data = {};
+the_points = [];
 </script>

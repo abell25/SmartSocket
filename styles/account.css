@@ -1,5 +1,6 @@
 #sidebar {
 	width: 30%;
+	height: auto;
 	display: inline-block;
 	float: right;
 	overflow: hidden;

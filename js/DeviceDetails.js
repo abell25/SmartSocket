@@ -31,7 +31,7 @@ function ReadingViewModel() {
 
 function GetPoints() {
     var start = $('#start_date').val();
-    var end = $('#end_date').val();
+    var end = $('#end_date').val() + ' 23:59:59';
     $.ajax({
 	url: "http://yoursmartsocket.com/SmartSocket/php_scripts/getReadings.php",
 	    dataType: "json",

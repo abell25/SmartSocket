@@ -5,11 +5,11 @@ $P = array('title' => 'Devices',
 	   'js'  => 'getDevices.js');
 PrintHeader($P);
 ?>
-
+  <!-- ko if: devices().length > 0-->
 <ul data-bind="foreach: devices">
-<div class="content-section">
+<div class="content-section" >
   <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" /></h2>
-  <div class="onoffswitch" >
+  <div class="onoffswitch">
     <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked">
     <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id() }">
       <div class="onoffswitch-inner"></div>
@@ -24,6 +24,7 @@ PrintHeader($P);
   </span>
 </div>
 </ul>
+<!-- /ko -->
 <?php PrintFooter($P); ?>
 <script>
 var start_date = (5).days().ago().toString('yyyy-MM-dd hh:mm:ss')

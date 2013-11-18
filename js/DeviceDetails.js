@@ -8,7 +8,7 @@ $(function() {
 
     $('#start_date').val(start_date);
     $('#end_date').val(end_date);
-
+    GetPoints();
     RenderPlot();
     vm = new ReadingViewModel();
     ko.applyBindings(vm);
@@ -32,6 +32,7 @@ function ReadingViewModel() {
 function GetPoints() {
     var start = $('#start_date').val();
     var end = $('#end_date').val() + ' 23:59:59';
+    console.log('start='+start+',end='+end);
     $.ajax({
 	url: "http://yoursmartsocket.com/SmartSocket/php_scripts/getReadings.php",
 	    dataType: "json",
@@ -39,7 +40,8 @@ function GetPoints() {
 	data: {
 	       'dev_id': dev_id, 
 	    'start_time': start,
-	       'end_time': end
+	    'end_time': end,
+	    'num_points':30
 	      }
 	}).done(function(resp) {
 	    console.log("ajax returned!");
@@ -59,18 +61,41 @@ var the_plot;
 function RenderPlot() {
     if (the_plot) { the_plot.destroy(); }
 
+    var mindate = $('#start_date').val();
+    var maxdate = $('#end_date').val() + ' 23:59:59';
+    console.log('mindate=' + mindate + ',maxdate=' + maxdate);
+    var min = Math.min.apply(Math, the_points.map(function(x) { return x[1]; }));
+    var max = Math.max.apply(Math, the_points.map(function(x) { return x[1]; }));
+    var dateFormat = (((Date.parse(maxdate)-Date.parse(mindate))/1000/60/60) < 48)? "%H:%M" : "%Y-%m-%d";
+    console.log('min='+min+',max='+max+',dateFormat='+dateFormat);
+
     the_plot = $.jqplot('usage', [the_points], {
-	title:'Current Usage',
+ 	title:'Current Usage',
 	axes:{
-	    xaxis:{label:'date',
+	    xaxis:{
+		   min: mindate,
+		   max: maxdate,
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-		   renderer:$.jqplot.DateAxisRenderer
+		   renderer:$.jqplot.DateAxisRenderer,
+		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       angle: -30,
+                       formatString: dateFormat
+                   },
+		   
 	    },
-            yaxis:{label:'amps',
+            yaxis:{
 		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-		   min:0, max:1000
+		   min:min, 
+		   max:max,
+		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       formatString: "%d mA"
+                   },
 	    }
 	},
-	series:[{lineWidth:4, markerOptions:{style:'square'}}]
+	//series:[{lineWidth:4, markerOptions:{style:'square'}}],
+	legend: { show: false, location: 'se'},
+        cursor: { show: true, zoom: true, showTooltip: false }
     });
 }

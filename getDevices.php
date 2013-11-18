@@ -6,6 +6,7 @@ $P = array('title' => 'Devices',
 PrintHeader($P);
 ?>
 
+<!-- ko if: devices().length > 0-->
 <div id="graphBox">
   <div id=daterange>
     Start <input type="date" name="start_date" id="start_date" />
@@ -15,12 +16,11 @@ PrintHeader($P);
   <div id="usage" style="height:350px;width:500px;"></div>
 </div>
 
-<!-- ko if: devices().length > 0-->
 <ul data-bind="foreach: devices" id="deviceList">
 <div class="content-section" >
   <h2><a data-bind="attr: { 'href': 'DeviceDetails.php?dev_id=' + dev_id() }">Device <span data-bind="text: dev_id"></span></a> - <input type="text" data-bind="value: nickname" id="nickname" /></h2>
   <div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" data-bind="attr: { 'id': 'dev_' + dev_id() }, checked: IsChecked, disable: use_schedule">
     <label class="onoffswitch-label" data-bind="attr: { 'for': 'dev_' + dev_id() }">
       <div class="onoffswitch-inner"></div>
       <div class="onoffswitch-switch"></div>
@@ -35,6 +35,9 @@ PrintHeader($P);
 </div>
 </ul>
 <!-- /ko -->
+<!-- ko ifnot: devices().length > 0-->
+<!-- /ko -->
+
 <?php PrintFooter($P); ?>
 <script>
 var start_date = (5).days().ago().toString('yyyy-MM-dd hh:mm:ss')

@@ -21,6 +21,11 @@
 			include 'newDevice.html.php';
 			exit();
 		}
+		if($dev_id > 65535 ) {
+			$error .= 'Device ID must be less then 65535 (smallint)';
+			include 'account.html.php';
+			exit();
+		}
 		
 		$sql = '';
 		$front_sql = 'INSERT INTO device(dev_id,user_id,nickname';

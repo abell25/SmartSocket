@@ -32,7 +32,6 @@ function PrintHeader($P) {
 	  	  	<div id="welcome">
 			<p>Welcome, 
 				<?php 
-				  session_start(); 
 				  echo $_SESSION['username']; 
 				?>
 			</p>

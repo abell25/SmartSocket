@@ -19,9 +19,6 @@ input, textarea{
 	border: 1px solid #E5E5E5;
 	outline: 0;
 	font: normal 15px/150% Verdana, sans-serif;
-
-	-webkit-box-shadow: 0 0 8px rgba(0,0,0,.1);
-	-moz-box-shadow: 0 0 8px rgba(0,0,0,.1);
 	box-shadow: 0 0 8px rgba(0,0,0,.1);
 
 	background: -webkit-linear-gradient(top, #EEE 0px, #FFF 25px);
@@ -37,9 +34,6 @@ textarea {
 input:hover, input:focus,
 textarea:hover, textarea:focus {
 	border-color: #C9C9C9;
-
-	-webkit-box-shadow: 0 0 8px rgba(0,0,0,.15);
-	-moz-box-shadow: 0 0 8px rgba(0,0,0,.15);
 	box-shadow: 0 0 8px rgba(0,0,0,.15);
 }
 
@@ -58,14 +52,13 @@ input[type=submit] {
 	font-size: 14px;
 	font-weight: bold;
 	color: #FFFFFF;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 
 input[type=submit]:hover {
 	background: #2fccff;
-	-webkit-box-shadow: 1px 1px 8px rgba(0,0,0,.4);
+	box-shadow: 1px 1px 8px rgba(0,0,0,.4);
 }
 
 select{
@@ -74,9 +67,8 @@ select{
 	font-family: Verdana, sans-serif;
 	background: url(../arrow.png) 90% 50% no-repeat;
 
-	-webkit-appearance: none;
-	-webkit-border-radius: 5px;
-	-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 	
 	cursor: pointer;
 	border: 1px solid #CCC;
@@ -86,7 +78,7 @@ select{
 }
 
 select:hover, select:focus {
-	-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 	outline: 0;
 	cursor: pointer;
 	border: 1px solid #CCC;

@@ -38,7 +38,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
 		}
 
 		$output .= '<p id="success">Congratulations '. $username .' you have successfully
-						been registered. Please visit the <a href="?login">login</a> page.</p>';
+						been registered. Please visit the <a href="?">login</a> page.</p>';
 		$title = 'Successful Registration';
 		include 'output.html.php';
 		exit();

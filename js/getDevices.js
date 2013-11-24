@@ -78,9 +78,43 @@ function DeviceViewModel() {
     };
 }
 
+
 function getStateFromSchedule(device) {
     console.log('schedule says: false');
     //TODO: get status by reading schedule and calculating
+    var devices_json = <?php include 'php_scripts/getDevices.php'; ?>;
+    var devices = [];
+    for (var i=0; i < devices_json.length; i++) {
+        devices[i] = {
+	    key:devices_json[i].nickname, 
+	    label:devices_json[i].nickname
+	};
+    }
+	
+    scheduler.config.xml_date="%Y-%m-%d %H:%i";
+    scheduler.config.lightbox.sections=[{
+	  name:"device", 
+	  height:40, 
+	  map_to:"text", 
+	  type:"select" , 
+	  options:devices, 
+	  focus:true
+        },
+	{
+	  name:"time", 
+	  height:72, 
+	  type:"time", 
+	  map_to:"auto"
+	}
+   ];
+   scheduler.locale.labels.section_device="Device Name";
+	
+   scheduler.init('scheduler_here', new Date(),"month");
+   scheduler.load("scheduler/connector.php");
+	
+    var dp = new dataProcessor("scheduler/connector.php");
+    dp.init(scheduler);
+        
     return false;
 }
 

@@ -98,6 +98,8 @@ function PrintHeader($P) {
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.canvasTextRenderer.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/jqplot.cursor.min.js"></script>
     <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/date.js"></script>
+    <script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/dhtmlxscheduler.js"></script>
+    
     <?php
     if (array_key_exists('js', $P)) {
       echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/' . $P['js'] .'"></script>';

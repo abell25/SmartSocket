@@ -19,6 +19,12 @@ function PrintHeader($P) {
 		if (array_key_exists('css', $P)) {
 		  echo '<link href="http://www.yoursmartsocket.com/SmartSocket/styles/'. $P['css'] .'" rel="stylesheet" type="text/css" />';
 		}
+                if (array_key_exists('css2', $P)) {
+		  echo '<link href="http://www.yoursmartsocket.com/SmartSocket/styles/'. $P['css2'] .'" rel="stylesheet" type="text/css" />';
+		}
+		if (array_key_exists('css3', $P)) {
+		  echo '<link href="http://www.yoursmartsocket.com/SmartSocket/styles/'. $P['css3'] .'" rel="stylesheet" type="text/css" />';
+		}
 		if (array_key_exists('js', $P)) {
 		  echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/scripts/' . $P['js'] .'"></script>';
 		}
@@ -54,37 +60,7 @@ function PrintHeader($P) {
 <?php function PrintFooter($P) { ?>
       </div><!-- content -->
       <div id="footer">
-	<div class="section-separator"></div>
-	<div class="link-section">
-	  <h1>Title</h1>
-	  <div class="link-separator"></div>
-	  <ul>
-	    <li><a href="link1" title="Link 1">Link 1</a></li>
-	    <li><a href="link2" title="Link 2">Link 2</a></li>
-	    <li><a href="link2" title="Link 3">Link 3</a></li>
-	    <li><a href="link2" title="Link 4">Link 4</a></li>
-	  </ul>
-	</div>
-	<div class="link-section">
-	  <h1>Title</h1>
-	  <div class="link-separator"></div>
-	  <ul>
-	    <li><a href="link1" title="Link 1">Link 1</a></li>
-	    <li><a href="link2" title="Link 2">Link 2</a></li>
-	    <li><a href="link2" title="Link 3">Link 3</a></li>
-	    <li><a href="link2" title="Link 4">Link 4</a></li>
-	  </ul>
-	</div>
-	<div class="link-section">
-	  <h1>Title</h1>
-	  <div class="link-separator"></div>
-	  <ul>
-	    <li><a href="link1" title="Link 1">Link 1</a></li>
-	    <li><a href="link2" title="Link 2">Link 2</a></li>
-	    <li><a href="link2" title="Link 3">Link 3</a></li>
-	    <li><a href="link2" title="Link 4">Link 4</a></li>
-	  </ul>
-	</div>
+      <small>&copy; 2013 - All rights reserved</small>	 
       </div>
     </div>
   </body>
@@ -103,6 +79,12 @@ function PrintHeader($P) {
     <?php
     if (array_key_exists('js', $P)) {
       echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/' . $P['js'] .'"></script>';
+    }
+    if (array_key_exists('js2', $P)) {
+      echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/' . $P['js2'] .'"></script>';
+    }
+    if (array_key_exists('js3', $P)) {
+      echo '<script type="text/javascript" src="http://www.yoursmartsocket.com/SmartSocket/js/' . $P['js3'] .'"></script>';
     }
     ?>
 <?php } ?>

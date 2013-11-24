@@ -82,12 +82,11 @@ function DeviceViewModel() {
 function getStateFromSchedule(device) {
     console.log('schedule says: false');
     //TODO: get status by reading schedule and calculating
-    var devices_json = <?php include 'php_scripts/getDevices.php'; ?>;
     var devices = [];
-    for (var i=0; i < devices_json.length; i++) {
+    for (var i=0; i < the_data.length; i++) {
         devices[i] = {
-	    key:devices_json[i].nickname, 
-	    label:devices_json[i].nickname
+	    key:the_data[i].nickname, 
+	    label:the_data[i].nickname
 	};
     }
 	

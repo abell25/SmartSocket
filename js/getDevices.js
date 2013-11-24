@@ -7,8 +7,31 @@ $(function() {
     $('#start_date').val(start_date);
     $('#end_date').val(end_date);
 
+
     if (the_devices.length > 0) { GetAllPoints(); }
     ko.applyBindings(new DeviceViewModel());
+
+    
+    scheduler.attachEvent("onXLE", function (){
+	console.log("schedule event happened!..?");
+	for (i=0;i<the_devices.length;i++){
+	    var dev = the_devices[i];
+	    if (dev.use_schedule()) {
+		dev.use_schedule(false);
+		dev.use_schedule(true);
+	    }
+	}
+    });
+    scheduler.attachEvent("onEventChanged", function (){
+	console.log("event changed!..?");
+	for (i=0;i<the_devices.length;i++){
+	    var dev = the_devices[i];
+	    if (dev.use_schedule()) {
+		dev.use_schedule(false);
+		dev.use_schedule(true);
+	    }
+	}
+    });
 });
 
 function Device(data) {
@@ -31,7 +54,9 @@ function Device(data) {
 	    }
 	},
 	write: function(val) {
-	    self.user_set_state((val)?"1":"0")
+	    console.log('IsChecked write occurred!');
+	    if (+self.user_set_state() < "2")
+		self.user_set_state((val)?"1":"0")
 	}
     });
     self.use_schedule = ko.computed({
@@ -80,8 +105,20 @@ function DeviceViewModel() {
 
 
 function getStateFromSchedule(device) {
-    console.log('schedule says: false');
-    //TODO: get status by reading schedule and calculating
+    console.log('getting schedule for dev: ' + device.nickname());
+
+    var curr_events = scheduler.getEvents(Date.parse('now'), Date.parse('now'));
+    var device_events = curr_events.filter(function(x) {
+	return x.text == device.nickname();
+    });
+
+    var isOn =  device_events.length > 0;
+    return isOn;
+}
+
+
+
+function initCalendar() {
     var devices = [];
     for (var i=0; i < the_data.length; i++) {
         devices[i] = {
@@ -113,8 +150,6 @@ function getStateFromSchedule(device) {
 	
     var dp = new dataProcessor("scheduler/connector.php");
     dp.init(scheduler);
-        
-    return false;
 }
 
 function updateDevice(device) {
@@ -174,10 +209,10 @@ function RenderPlot() {
         cursor: { show: true, zoom: true, showTooltip: false }
     });
 }
-var i = 0;
+var curr_i = 0;
 function GetAllPoints() {
     var dev_ids = the_devices.map(function(x) { return x.dev_id(); });
-    i = 0;
+    curr_i = 0;
     dev_ids.forEach(function(dev_id) {
 	GetPoints(dev_id);
     });
@@ -203,9 +238,9 @@ function GetPoints(dev_id) {
 	    the_points[dev_id] = resp.map(function(el) { 
 		return [el.time_id, el.amps]; 
 	    });
-	    i = i+1;
-	    console.log("i="+i);
-	    if (i == the_devices.length) { 
+	    curr_i = curr_i+1;
+	    console.log("curr_i="+curr_i);
+	    if (curr_i == the_devices.length) { 
 		var dev_ids = the_devices.map(function(x) { return x.dev_id(); });
 		the_points = dev_ids.map(function(x) { return the_points[x]; });
 		the_points = the_points.filter(function(x) { return x.length > 0; });

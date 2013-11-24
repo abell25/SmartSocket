@@ -63,6 +63,7 @@ var params = "start_date=" + start_date + "&end_date=" + end_date;
 
 user_id = <?php echo $_GET['user_id'] ?>;
 the_data = <?php include 'php_scripts/getDevices.php'; ?>;
+initCalendar();
 the_devices = the_data.map(function(el) { return new Device(el); });
 
 graph_data = {};

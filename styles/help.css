@@ -1,8 +1,8 @@
 #sidebar {
-	width: 30%;
+	width: 20%;
 	height: auto;
 	display: inline-block;
-	float: right;
+	float: left;
 	overflow: hidden;
 	padding: 20px;
 	background: #FAFAFA; 
@@ -10,9 +10,9 @@
 }
 
 #main {
-	width: 65%;
+	width: 75%;
 	display: inline-block;
-	float: left;
+	float: right;
 	margin-top: 10px;	
 }
 
@@ -35,7 +35,7 @@ a {
 }
 
 button {
-	width: 250px;
+	width: 200px;
 	padding: 9px 15px;
 	background: #2EBBE8;
 	border: 0;
@@ -74,4 +74,19 @@ h2 {
 
 .content-section h2, h2{
 	text-align: center;
+}
+
+.pdfContainer {
+	width: 95%;
+	margin-left: 15px;
+}
+
+embed{
+	border: 1px solid grey;
+}
+
+#footerPad {
+	height: 50px;
+	width: 100%;
+	float: left;
 }

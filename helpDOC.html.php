@@ -12,7 +12,13 @@
 <div id="sidebar" class="shadow">
 	<h2>Pages</h2>
 	<div class="devices">
+		<button type="button" onClick="window.location.href='index.php?helpDOC&page=starting'">Getting Started</button>
 		<button type="button" onClick="window.location.href='index.php?helpDOC&page=accountManagement'">Account Management</button>
+		<button type="button" onClick="window.location.href='index.php?helpDOC&page=scheduling'">Scheduling</button>
+		<button type="button" onClick="window.location.href='index.php?helpDOC&page=hardware'">Hardware</button>
 	</div>
+</div>
+<div id="footerPad">
+</div>
 <?php PrintFooter($P); ?>
 	

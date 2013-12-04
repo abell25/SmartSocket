@@ -61,7 +61,7 @@ var start_date = (5).days().ago().toString('yyyy-MM-dd hh:mm:ss')
 var end_date = Date.parse('today').toString('yyyy-MM-dd hh:mm:ss');
 var params = "start_date=" + start_date + "&end_date=" + end_date;
 
-user_id = <?php echo $_GET['user_id'] ?>;
+user_id = <?php echo $_SESSION['user_id'] ?>;
 the_data = <?php include 'php_scripts/getDevices.php'; ?>;
 initCalendar();
 the_devices = the_data.map(function(el) { return new Device(el); });

@@ -9,6 +9,8 @@ if (isset($_GET['register'])) {
 	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/newDevice_controller.php';
 } elseif (isset($_GET['deviceInfo'])) {
 	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/deviceInfo_controller.php';
+} elseif (isset($_GET['helpDOC'])) {
+	include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/helpDOC_controller.php';
 } else {  
     include $_SERVER['DOCUMENT_ROOT'].'/SmartSocket/controllers/login_controller.php';
 }

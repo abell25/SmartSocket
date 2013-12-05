@@ -19,7 +19,7 @@ $devices = array();
 if (!@fopen("__test.txt", "w+"))
 {
 	echo "Error: ";
-    echo error_get_last();
+    print_r(error_get_last());
 	echo "<br>";
 }
 

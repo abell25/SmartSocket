@@ -16,7 +16,7 @@ $file = fopen("ScheduleFiles/" . $deviceID . ".txt", "w+");
 
 while ($row = mysql_fetch_assoc($result))
 {
-	fwrite($file, strtotime($row['start_date']) . ";" . strtotime($row['start_date']) . "\n");
+	fwrite($file, strtotime($row['start_date']) . ";" . strtotime($row['end_date']) . "\n");
 }
 
 fclose($file);

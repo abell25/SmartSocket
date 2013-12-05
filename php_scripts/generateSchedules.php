@@ -16,6 +16,8 @@ $devices = array();
 
 $file = fopen("__test.txt", "w+");
 
+echo "File successful: " . $file;
+
 //$file = fopen(/*"ScheduleFiles/" . */$deviceID . ".txt", "w+");
 echo "File name: " . $deviceID;
 echo "<br>";

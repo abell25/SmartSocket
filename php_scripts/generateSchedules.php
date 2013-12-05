@@ -19,9 +19,9 @@ echo "<br>";
 
 while ($row = mysql_fetch_assoc($result))
 {
-	echo $row['start_date'];
+	echo $row['start_date']->format('U');
 	echo ";";
-	echo $row['end_date'];
+	echo $row['end_date']->format('U');
 	echo "<br>";
 }
 

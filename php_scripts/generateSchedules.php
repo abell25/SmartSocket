@@ -14,7 +14,7 @@ $sql = "SELECT id, start_date, end_date, text FROM events WHERE id = " . $device
 $result = mysql_query($sql) or die(mysql_error());
 $devices = array();
 
-fopen(__DIR__ . "ScheduleFiles/" . $deviceID . ".txt", "w+");
+$file = fopen("ScheduleFiles/" . $deviceID . ".txt", "w+");
 echo "File name: " . $deviceID;
 echo "<br>";
 
@@ -25,6 +25,8 @@ while ($row = mysql_fetch_assoc($result))
 	echo strtotime($row['end_date']);
 	echo "<br>";
 }
+
+fclose($file);
 
 }
 //echo json_encode($devices);

@@ -14,7 +14,12 @@ $sql = "SELECT id, start_date, end_date, text FROM events WHERE id = " . $device
 $result = mysql_query($sql) or die(mysql_error());
 $devices = array();
 
-$file = fopen("__test.txt", "w+") or die("failed to open file");
+//$file = fopen("__test.txt", "w+") or die("failed to open file");
+
+if (!@fopen("__test.txt", "w+"))
+{
+    echo $php_errormsg;
+}
 
 echo "File successful: " . $file;
 

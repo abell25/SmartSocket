@@ -68,7 +68,7 @@ function PrintHeader($P) {
 	  <br>
 	  Testing
 	  <br>
-	  <?php GenerateScheduleFiles() ?>
+	  <?php GenerateScheduleFiles(3) ?>
       </div>
     </div>
   </body>

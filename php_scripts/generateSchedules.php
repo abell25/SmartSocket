@@ -14,19 +14,7 @@ $sql = "SELECT id, start_date, end_date, text FROM events WHERE id = " . $device
 $result = mysql_query($sql) or die(mysql_error());
 $devices = array();
 
-//$file = fopen("ScheduleFiles/test.txt", "w+") or die("failed to open file");
-
-if (!@fopen("ScheduleFiles/test.txt", "w+"))
-{
-	echo "Error: ";
-    print_r(error_get_last());
-	echo "<br>";
-}
-
-echo "File successful: " . $file;
-echo "<br>";
-
-//$file = fopen(/*"ScheduleFiles/" . */$deviceID . ".txt", "w+");
+$file = fopen("ScheduleFiles/" . */$deviceID . ".txt", "w+");
 echo "File name: " . $deviceID;
 echo "<br>";
 
@@ -36,6 +24,8 @@ while ($row = mysql_fetch_assoc($result))
 	echo ";";
 	echo strtotime($row['end_date']);
 	echo "<br>";
+	
+	fwrite($file, strtotime($row['start_date']) . ";" . fwrite($file, strtotime($row['end_date'])); . "/n");
 }
 
 fclose($file);

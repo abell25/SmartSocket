@@ -67,6 +67,8 @@ function PrintHeader($P) {
 	  <small><a href="index.php?helpDOC">Help Documentation</a></small>
 	  <br>
 	  Testing
+	  <br>
+	  <?php GenerateScheduleFiles() ?>
       </div>
     </div>
   </body>

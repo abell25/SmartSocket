@@ -1,6 +1,9 @@
 <?php
 //$user_id = $_SESSION['user_id'];
 
+function GenerateScheduleFiles()
+{
+
 $conn = mysql_connect('localhost','root','bitnami') or die(mysql_error());
 mysql_select_db("SmartSocket") or die(mysql_error());
 
@@ -14,6 +17,8 @@ while ($row = mysql_fetch_assoc($result))
 {
 	echo $row['id'] . " " . $row['start_date'] . " " . $row['end_date'] . " " . $row['text'];
 	echo "<br>";
+}
+
 }
 //echo json_encode($devices);
 ?>

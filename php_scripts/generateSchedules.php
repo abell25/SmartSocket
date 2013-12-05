@@ -18,10 +18,13 @@ $devices = array();
 
 if (!@fopen("__test.txt", "w+"))
 {
+	echo "Error: ";
     echo $php_errormsg;
+	echo "<br>";
 }
 
 echo "File successful: " . $file;
+echo "<br>";
 
 //$file = fopen(/*"ScheduleFiles/" . */$deviceID . ".txt", "w+");
 echo "File name: " . $deviceID;

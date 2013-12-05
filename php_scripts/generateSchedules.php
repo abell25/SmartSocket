@@ -14,7 +14,7 @@ $sql = "SELECT id, start_date, end_date, text FROM events WHERE id = " . $device
 $result = mysql_query($sql) or die(mysql_error());
 $devices = array();
 
-unlink(__DIR__ . "ScheduleFiles/" . $deviceID . ".txt");
+fopen(__DIR__ . "ScheduleFiles/" . $deviceID . ".txt", "w+");
 echo "File name: " . $deviceID;
 echo "<br>";
 

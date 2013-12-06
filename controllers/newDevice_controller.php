@@ -23,7 +23,7 @@
 		}
 		if($dev_id > 65535 ) {
 			$error .= 'Device ID must be less then 65535 (smallint)';
-			include 'account.html.php';
+			include 'newDevice.html.php';
 			exit();
 		}
 		

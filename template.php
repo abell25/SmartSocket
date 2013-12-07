@@ -64,15 +64,6 @@ function PrintHeader($P) {
       <div id="footer">
       <small>&copy; 2013 - All rights reserved</small>	 
 	  <small><a href="index.php?helpDOC">Help Documentation</a></small>
-	  <?php
-	  GenerateScheduleFile(1);
-	  GenerateScheduleFile(3);
-	  GenerateScheduleFile(4);
-	  GenerateScheduleFile(5);
-	  GenerateScheduleFile(10);
-	  GenerateScheduleFile(387);
-	  GenerateScheduleFile(99);
-	  ?>
       </div>
     </div>
   </body>

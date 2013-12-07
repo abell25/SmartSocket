@@ -37,12 +37,12 @@
 	var devices = [];
 	
 	for (var i=0; i < devices_json.length; i++) {
-		devices[i] = {key:devices_json[i].nickname, label:devices_json[i].nickname};
+		devices[i] = {key:devices_json[i].dev_id, label:devices_json[i].nickname};
 	}
 	
 	scheduler.config.xml_date="%Y-%m-%d %H:%i";
 	scheduler.config.lightbox.sections=[
-		{name:"device", height:40, map_to:"text", type:"select" , options:devices, focus:true},
+		{name:"device", height:40, map_to:"device_id", type:"select" , options:devices, focus:true},
 		{name:"time", height:72, type:"time", map_to:"auto"}
 	];
 	scheduler.locale.labels.section_device="Device Name";

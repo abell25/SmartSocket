@@ -10,15 +10,16 @@ mysql_select_db("smartsocket");
 
 $con_sched = new SchedulerConnector($res);
 
+function updateModified($data) {
+        $dev_id = $data->get_value("device_id");
+        mysql_query('UPDATE device SET schedule_last_modified = CURRENT_TIMESTAMP WHERE dev_id = '.$dev_id);
+}
+
 $con_sched->event->attach("beforeInsert", "updateModified");
 $con_sched->event->attach("beforeUpdate", "updateModified");
 $con_sched->event->attach("beforeDelete", "updateModified");
 
 $con_sched->render_sql($sql,"id","start_date,end_date,text,device_id");
-
-
-function updateModified($data) {
-        $dev_id = $data->get_value("device_id");
-        mysql_query("UPDATE device SET schedule_last_modified = CURRENT_TIMESTAMP WHERE dev_id = $dev_id");
-}
 ?>
+
+

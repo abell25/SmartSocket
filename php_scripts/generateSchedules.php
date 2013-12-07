@@ -5,9 +5,7 @@ function GenerateScheduleFile($deviceID)
 $conn = mysql_connect('localhost','root','bitnami') or die(mysql_error());
 mysql_select_db("SmartSocket") or die(mysql_error());
 
-$sql = "SELECT id, start_date, end_date, text FROM events WHERE id = " . $deviceID;
-
-//echo "sql: " . $sql . "<br />";
+$sql = "SELECT id, start_date, end_date, text FROM events WHERE device_id = " . $deviceID;
 
 $result = mysql_query($sql) or die(mysql_error());
 $devices = array();

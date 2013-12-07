@@ -31,14 +31,6 @@
 <?php PrintFooter($P); ?>
 
 <script>
-/*
-	var devices = [
-	{key:"device_id", label:"device1"},
-	{key:"device_id", label:"device2"},
-	{key:"device_id", label:"device3"}
-	];
-*/
-
 	<?php session_start(); ?>;
 	<?php $_GET['user_id'] = $_SESSION['user_id']; ?>;
 	var devices_json = <?php include 'php_scripts/getDevices.php'; ?>;
@@ -55,9 +47,20 @@
 	];
 	scheduler.locale.labels.section_device="Device Name";
 	
+	scheduler.attachEvent("onEventAdded", function(id,e){
+		e.text = getDeviceName(e.device_id);
+    });
+	
 	scheduler.init('scheduler_here', new Date(),"month");
 	scheduler.load("scheduler/connector.php");
 	
 	var dp = new dataProcessor("scheduler/connector.php");
 	dp.init(scheduler);
+	
+	function getDeviceName(dev_id){
+		for (var i = 0; i < devices.length; i++){
+				if (devices[i].key == dev_id)
+						return devices[i].label;
+		}
+	}
 </script>

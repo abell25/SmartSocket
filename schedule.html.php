@@ -51,6 +51,10 @@
 		e.text = getDeviceName(e.device_id);
     });
 	
+	scheduler.attachEvent("onEventChanged", function(id,e){
+		e.text = getDeviceName(e.device_id);
+	});
+	
 	scheduler.init('scheduler_here', new Date(),"month");
 	scheduler.load("scheduler/connector.php");
 	

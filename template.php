@@ -12,6 +12,7 @@ function PrintHeader($P) {
 <!DOCTYPE html>
 <html>
   <head>
+	<meta charset="UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
     <link href="http://www.yoursmartsocket.com/SmartSocket/styles/style.css" rel="stylesheet" type="text/css" />
     <link href="http://www.yoursmartsocket.com/SmartSocket/styles/devices.css" rel="stylesheet"type="text/css" />

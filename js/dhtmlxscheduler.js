@@ -5544,7 +5544,7 @@ scheduler._skin_init = function(){
 	if (minic) minic.padding = 14;
 
 	scheduler.templates.event_bar_date = function(start,end,ev) {
-		return "• <b>"+scheduler.templates.event_date(start)+"</b> ";
+		return "&#8226 <b>"+scheduler.templates.event_date(start)+"</b> ";
 	};
 
 	//scheduler._lightbox_template="<div class='dhx_cal_ltitle'><span class='dhx_mark'>&nbsp;</span><span class='dhx_time'></span><span class='dhx_title'></span><div class='dhx_close_icon'></div></div><div class='dhx_cal_larea'></div>";

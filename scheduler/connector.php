@@ -16,6 +16,8 @@ $con_sched = new SchedulerConnector($res);
 function updateModified($data) {
         $dev_id = $data->get_value("device_id");
         mysql_query('UPDATE device SET schedule_last_modified = CURRENT_TIMESTAMP WHERE dev_id = '.$dev_id);
+		mysql_query('UPDATE events SET text = (SELECT nickname FROM device WHERE dev_id = '.$dev_id.')
+					WHERE device_id = '.$dev_id);
 		GenerateScheduleFile($dev_id);
 }
 

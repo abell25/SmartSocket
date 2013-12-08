@@ -23,6 +23,7 @@ function updateModified($data) {
 function updateModifiedScheduleFile($data) {
         $dev_id = $data->get_value("device_id");
 		GenerateScheduleFile($dev_id);
+		GenerateAllScheduleFiles($dev_id);
 }
 
 $con_sched->event->attach("beforeInsert", "updateModified");

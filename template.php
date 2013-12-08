@@ -1,6 +1,4 @@
 <?php
-include "php_scripts/generateSchedules.php";
-
 function PrintHeader($P) { 
  if(!isset($_SESSION)){
     session_start();
@@ -65,7 +63,6 @@ function PrintHeader($P) {
       <div id="footer">
       <small>&copy; 2013 - All rights reserved</small>	 
 	  <small><a href="index.php?helpDOC">Help Documentation</a></small>
-	  <?php //GenerateScheduleFile(3); ?>
       </div>
     </div>
   </body>

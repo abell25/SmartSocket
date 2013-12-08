@@ -18,12 +18,20 @@ function updateModified($data) {
         mysql_query('UPDATE device SET schedule_last_modified = CURRENT_TIMESTAMP WHERE dev_id = '.$dev_id);
 		mysql_query('UPDATE events SET text = (SELECT nickname FROM device WHERE dev_id = '.$dev_id.')
 					WHERE device_id = '.$dev_id);
+}
+
+function updateModifiedScheduleFile($data) {
+        $dev_id = $data->get_value("device_id");
 		GenerateScheduleFile($dev_id);
 }
 
 $con_sched->event->attach("beforeInsert", "updateModified");
 $con_sched->event->attach("beforeUpdate", "updateModified");
 $con_sched->event->attach("beforeDelete", "updateModified");
+
+$con_sched->event->attach("afterInsert", "updateModifiedScheduleFile");
+$con_sched->event->attach("afterUpdate", "updateModifiedScheduleFile");
+$con_sched->event->attach("afterDelete", "updateModifiedScheduleFile");
 
 if ($con_sched->is_select_mode())
         $con_sched->render_complex_sql($sql,"id","start_date,end_date,text,device_id");

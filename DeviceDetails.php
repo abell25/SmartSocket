@@ -12,7 +12,11 @@ PrintHeader($P);
     End <input type="date" name="end_date" id="end_date" />
     <input type="submit" value="Update" onclick="GetPoints();"/>
 </div>
-<div id="usage" style="height:300px;width:400px;"></div>
+<div id="the_graphs">
+  <div id="usage" style="height:300px;width:400px;float:left;"></div>
+  <div id="cost" style="height:300px;width:400px;float:left;margin-left:100px;"></div>
+</div>
+<!--
 <table>
 <thead>
   <tr><td>Time</td><td>Amps</td><td>Volts</td><td>state</td></tr>
@@ -26,7 +30,7 @@ PrintHeader($P);
   </tr>
 </tbody>
 </table>
-
+-->
 <?php PrintFooter($P); ?>
 
 <script>

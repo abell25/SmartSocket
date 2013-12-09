@@ -1,4 +1,5 @@
-var the_plot;
+var the_plot1;
+var the_plot2;
 var vm;
 $(function() {
     console.log("Started..");
@@ -9,8 +10,8 @@ $(function() {
     $('#start_date').val(start_date);
     $('#end_date').val(end_date);
     GetPoints();
-    RenderPlot();
     UsageInfo();
+    //RenderPlot();
     vm = new ReadingViewModel();
     ko.applyBindings(vm);
 });
@@ -53,24 +54,25 @@ function GetPoints() {
 		return [el.time_id, el.amps]; 
 	    });
 	    vm.readings(the_readings);
-	    RenderPlot();
+	    the_points2 = UsageInfo();
+	    RenderPlot('usage', the_plot1, the_points);
+	    RenderPlot2('cost', the_plot2, the_points2);
 	});
     return false;
 }
 
-var the_plot;
-function RenderPlot() {
+function RenderPlot(div_name, the_plot, the_plot_data) {
     if (the_plot) { the_plot.destroy(); }
 
     var mindate = $('#start_date').val();
     var maxdate = $('#end_date').val() + ' 23:59:59';
     console.log('mindate=' + mindate + ',maxdate=' + maxdate);
-    var min = Math.min.apply(Math, the_points.map(function(x) { return x[1]; }));
-    var max = Math.max.apply(Math, the_points.map(function(x) { return x[1]; }));
+    var min = Math.min.apply(Math, the_plot_data.map(function(x) { return x[1]; }));
+    var max = Math.max.apply(Math, the_plot_data.map(function(x) { return x[1]; }));
     var dateFormat = (((Date.parse(maxdate)-Date.parse(mindate))/1000/60/60) < 48)? "%H:%M" : "%Y-%m-%d";
     console.log('min='+min+',max='+max+',dateFormat='+dateFormat);
 
-    the_plot = $.jqplot('usage', [the_points], {
+    the_plot = $.jqplot(div_name, [the_plot_data], {
  	title:'Current Usage',
 	axes:{
 	    xaxis:{
@@ -101,16 +103,60 @@ function RenderPlot() {
     });
 }
 
+function RenderPlot2(div_name, the_plot, the_plot_data) {
+    if (the_plot) { the_plot.destroy(); }
+
+    var mindate = $('#start_date').val();
+    var maxdate = $('#end_date').val() + ' 23:59:59';
+    console.log('mindate=' + mindate + ',maxdate=' + maxdate);
+    var min = Math.min.apply(Math, the_plot_data.map(function(x) { return x[1]; }));
+    var max = Math.max.apply(Math, the_plot_data.map(function(x) { return x[1]; }));
+    var dateFormat = (((Date.parse(maxdate)-Date.parse(mindate))/1000/60/60) < 48)? "%H:%M" : "%Y-%m-%d";
+    console.log('min='+min+',max='+max+',dateFormat='+dateFormat);
+
+    the_plot = $.jqplot(div_name, [the_plot_data, the_limit], {
+ 	title:'Total cost',
+	series:[{showMarker:true}, {showMarker:false}],
+	axes:{
+	    xaxis:{
+		   min: mindate,
+		   max: maxdate,
+		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		   renderer:$.jqplot.DateAxisRenderer,
+		   tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       angle: -30,
+                       formatString: dateFormat
+                   },
+		   
+	    },
+            yaxis:{
+		   labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+		   min:min, 
+		   max:max,
+		   //tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+		   tickOptions: {
+                       formatString: "$%d"
+                   },
+	    }
+	},
+	//series:[{lineWidth:4, markerOptions:{style:'square'}}],
+	legend: { show: false, location: 'se'},
+        cursor: { show: true, zoom: true, showTooltip: false }
+    });
+}
+
 function UsageInfo() {
-    var max_cost = parseFloat(usageInfo['max_power_usage']);
+    var max_cost = parseFloat(usageInfo['max_cost']);
     var max_power_usage = parseFloat(usageInfo['max_power_usage']);
     var power_cost = parseFloat(usageInfo['power_cost']);
 
-    the_points2 = [];
+    the_points2 = []; the_limit = [];
     var totalmAmps = 0; var totalTime = 0;
     for (var i=0; i<the_data.length; i++){
 	if (i == 0) {
 	    the_points2[i] = [the_data[i].time_id, 0];
+	    the_limit[i] = [the_data[i].time_id, max_cost];
 	} else {
 	    var deltaTime = (new Date(the_data[i].time_id) - 
 			     new Date(the_data[i-1].time_id))/1000;
@@ -121,6 +167,8 @@ function UsageInfo() {
 	    var kW_hrs = (amp_hrs*120)/1000;//volts=120, /1000 is kilo-
 	    var cost = kW_hrs * power_cost/100; //cents=100
 	    the_points2[i] = [the_data[i].time_id, cost];
+            the_limit[i] = [the_data[i].time_id, max_cost];
 	}
     }
+    return the_points2;
 }

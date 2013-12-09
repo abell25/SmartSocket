@@ -13,10 +13,13 @@ mysql_select_db("smartsocket");
 
 $con_sched = new SchedulerConnector($res);
 
+$old_dev_id = 0;
+
 function updateModified($data) {
         $id = $data->get_value("id");
         $dev_id = $data->get_value("device_id");
         $result = mysql_query('SELECT device_id FROM events WHERE id = '.$id);
+		global $old_dev_id;
         $old_dev_id = (int)mysql_result($result, 0, 'device_id');
         if ($result && $old_device_id != $dev_id) {
                 mysql_query('UPDATE device
@@ -30,7 +33,9 @@ function updateModified($data) {
 
 function updateModifiedScheduleFile($data) {
         $dev_id = $data->get_value("device_id");
+		global $old_dev_id;
 		GenerateScheduleFile($dev_id);
+		GenerateScheduleFile($old_dev_id);
 		//GenerateAllScheduleFiles();
 }
 

@@ -11,6 +11,7 @@ $(function() {
     $('#end_date').val(end_date);
     GetPoints();
     UsageInfo();
+    MakeCSV();
     //RenderPlot();
     vm = new ReadingViewModel();
     ko.applyBindings(vm);
@@ -170,10 +171,27 @@ function UsageInfo() {
 	    var columbs = totalmAmps*totalTime/1000; // mA -> A
 	    var amp_hrs = columbs/3600; // 3600 columns per hour
 	    var kW_hrs = (amp_hrs*120)/1000;//volts=120, /1000 is kilo-
-	    var cost = kW_hrs * power_cost/100; //cents=100
+	    var cost = kW_hrs * power_cost/100; /*cents=100*/
 	    the_points2[i] = [the_data[i].time_id, cost];
             the_limit[i] = [the_data[i].time_id, max_cost];
 	}
     }
     return the_points2;
+}
+
+var the_content;
+function MakeCSV() {
+    var csvContent = "data:text/csv;charset=utf-8,";
+    csvContent += "date,time,state,amps,volts,cost\n";
+    the_data.forEach(function(data, index) {
+	var dataStr = data['time_id'] + "," + data['state'] + "," 
+	    + data['amps'] + "," + data['volts'] + "," 
+	    + the_points2[index][1] + "\n"; 
+	csvContent += dataStr;
+    });
+    the_content = csvContent;
+
+    var encodedUri = encodeURI(csvContent);
+    $('#download_data').attr("href", encodedUri);
+    $('#download_data').attr("download", "smartsocket_data.csv");
 }

@@ -8,7 +8,8 @@ PrintHeader($P);
 ?>
 <h2 id="device_name"></h2>
 <form>
-<input type="button" value="Print this page" onClick="window.print()" style="float:right;">
+<input type="button" value="Print page" onClick="window.print()" style="float:right;">
+<div style="float:right;"><a id="download_data">Download excel data</a></div>
 </form>
 <div id="daterange" style="margin-bottom:20px;">
     Start <input type="date" name="start_date" id="start_date" />

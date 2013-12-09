@@ -36,7 +36,7 @@ function updateModifiedScheduleFile($data) {
 		global $old_dev_id;
 		GenerateScheduleFile($dev_id);
 		GenerateScheduleFile($old_dev_id);
-		GenerateAllScheduleFiles();
+		//GenerateAllScheduleFiles();
 }
 
 $con_sched->event->attach("beforeInsert", "updateModified");

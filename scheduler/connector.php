@@ -20,20 +20,14 @@ function updateModified($data) {
 					WHERE device_id = '.$dev_id);
 }
 
-function beforeUpdateModified($data) {
-        $dev_id = $data->get_value("device_id");
-        GenerateScheduleFile($dev_id);
-		updateModified($data);
-}
-
 function updateModifiedScheduleFile($data) {
         $dev_id = $data->get_value("device_id");
 		GenerateScheduleFile($dev_id);
-		//GenerateAllScheduleFiles();
+		GenerateAllScheduleFiles();
 }
 
 $con_sched->event->attach("beforeInsert", "updateModified");
-$con_sched->event->attach("beforeUpdate", "beforeUpdateModified");
+$con_sched->event->attach("beforeUpdate", "updateModified");
 $con_sched->event->attach("beforeDelete", "updateModified");
 
 $con_sched->event->attach("afterInsert", "updateModifiedScheduleFile");

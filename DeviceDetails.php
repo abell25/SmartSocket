@@ -26,6 +26,7 @@ PrintHeader($P);
   </tr>
 </tbody>
 </table>
+
 <?php PrintFooter($P); ?>
 
 <script>
@@ -33,4 +34,8 @@ dev_id = <?php echo $_GET['dev_id']; ?>;
 the_data = <?php include 'php_scripts/getReadings.php'; ?>;
 the_readings = the_data.map(function(el) { return new Reading(el); });
 the_points = the_data.map(function(el) { return [el.time_id, el.amps]; });
+usageInfo = <?php include 'php_scripts/getUsageInfo.php'; ?>;
+//max_cost = parseFloat(usageInfo['max_power_usage']);
+//max_power_usage = parseFloat(usageInfo['max_power_usage']);
+//power_cost = parseFloat(usageInfo['power_cost']);
 </script>

@@ -10,6 +10,7 @@ $(function() {
     $('#end_date').val(end_date);
     GetPoints();
     RenderPlot();
+    //UsageInfo();
     vm = new ReadingViewModel();
     ko.applyBindings(vm);
 });
@@ -99,3 +100,31 @@ function RenderPlot() {
         cursor: { show: true, zoom: true, showTooltip: false }
     });
 }
+/*
+function UsageInfo() {
+    var max_cost = parseFloat(usageInfo['max_power_usage']);
+    var max_power_usage = parseFloat(usageInfo['max_power_usage']);
+    var power_cost = parseFloat(usageInfo['power_cost']);
+
+    var the_points2 = [];
+    var totalmAmps = 0; var totalTime = 0;
+    for (var i=0; i<the_data.length; i++){
+	var a_point = the_data[i];
+	var time_id = a_point.time_id;
+	var milliamps = a_point.amps;
+	if (i == 0) {
+	    the_points2[i] = 0;
+	} else {
+	    var deltaTime = the_data[i].time_id - the_data[i-1].time_id;
+	    totalTime += deltaTime;
+	    totalmAmps += the_data[i].amps;
+	    var secs = totalTime/1000; // 1000 milliseconds in sec
+	    var columbs = totalmAmps*secs/1000; // mA -> A
+	    var amp_hrs = columbs/3600; // 3600 columns per hour
+	    var kW_hrs = amp_hrs *120/1000;//volts=120, /1000 is kilo-
+	    var cost = kW_hrs * power_cost/100;//cents=100
+	    the_points2[i] = cost;
+	}
+    }
+}
+*/

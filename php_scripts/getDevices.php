@@ -1,6 +1,5 @@
 <?php
 $user_id = $_SESSION['user_id'];
-
 $conn = mysql_connect('localhost','root','bitnami') or die(mysql_error());
 mysql_select_db("SmartSocket") or die(mysql_error());
 

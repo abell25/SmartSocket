@@ -144,7 +144,7 @@ function initCalendar() {
 	}
    ];
    scheduler.locale.labels.section_device="Device Name";
-	
+   scheduler.config.readonly = true;		
    scheduler.init('scheduler_here', new Date(),"month");
    scheduler.load("scheduler/connector.php");
 	

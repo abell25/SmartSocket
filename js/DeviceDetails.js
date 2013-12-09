@@ -164,8 +164,9 @@ function UsageInfo() {
 	    the_points2[i] = [the_data[i].time_id, 0];
 	    the_limit[i] = [the_data[i].time_id, max_cost];
 	} else {
-	    var deltaTime = (new Date(the_data[i].time_id) - 
-			     new Date(the_data[i-1].time_id))/1000;
+	    var d_next = Date.parse(the_data[i].time_id);
+	    var d_prev = Date.parse(the_data[i-1].time_id);
+	    var deltaTime = (d_next - d_prev)/1000;
 	    totalTime += deltaTime;
 	    totalmAmps += +the_data[i].amps;
 	    var columbs = totalmAmps*totalTime/1000; // mA -> A

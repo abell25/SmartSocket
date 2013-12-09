@@ -14,10 +14,18 @@ mysql_select_db("smartsocket");
 $con_sched = new SchedulerConnector($res);
 
 function updateModified($data) {
+        $id = $data->get_value("id");
         $dev_id = $data->get_value("device_id");
+        $result = mysql_query('SELECT device_id FROM events WHERE id = '.$id);
+        $old_dev_id = (int)mysql_result($result, 0, 'device_id');
+        if ($result && $old_device_id != $dev_id) {
+                mysql_query('UPDATE device
+                        SET schedule_last_modified = CURRENT_TIMESTAMP
+                        WHERE dev_id = '.$old_dev_id);
+        }
         mysql_query('UPDATE device SET schedule_last_modified = CURRENT_TIMESTAMP WHERE dev_id = '.$dev_id);
-		mysql_query('UPDATE events SET text = (SELECT nickname FROM device WHERE dev_id = '.$dev_id.')
-					WHERE device_id = '.$dev_id);
+        mysql_query('UPDATE events SET text = (SELECT nickname FROM device WHERE dev_id = '.$dev_id.')
+                                        WHERE device_id = '.$dev_id);
 }
 
 function updateModifiedScheduleFile($data) {

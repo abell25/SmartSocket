@@ -14,6 +14,7 @@ $(function() {
     //RenderPlot();
     vm = new ReadingViewModel();
     ko.applyBindings(vm);
+    $('#device_name').text('Device: ' + nickname);
 });
 
 function Reading(data) {
@@ -104,6 +105,10 @@ function RenderPlot(div_name, the_plot, the_plot_data) {
 }
 
 function RenderPlot2(div_name, the_plot, the_plot_data) {
+    if (!max_cost) {
+	console.log("no max cost!");
+	return;
+    }
     if (the_plot) { the_plot.destroy(); }
 
     var mindate = $('#start_date').val();

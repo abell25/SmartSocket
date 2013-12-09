@@ -6,8 +6,8 @@ $P = array('title' => 'Devices',
 	   'js'  => 'DeviceDetails.js');
 PrintHeader($P);
 ?>
-<h2>Device Details</h2>
-<div id=daterange>
+<h2 id="device_name"></h2>
+<div id="daterange" style="margin-bottom:20px;">
     Start <input type="date" name="start_date" id="start_date" />
     End <input type="date" name="end_date" id="end_date" />
     <input type="submit" value="Update" onclick="GetPoints();"/>
@@ -39,7 +39,9 @@ the_data = <?php include 'php_scripts/getReadings.php'; ?>;
 the_readings = the_data.map(function(el) { return new Reading(el); });
 the_points = the_data.map(function(el) { return [el.time_id, el.amps]; });
 usageInfo = <?php include 'php_scripts/getUsageInfo.php'; ?>;
-//max_cost = parseFloat(usageInfo['max_power_usage']);
-//max_power_usage = parseFloat(usageInfo['max_power_usage']);
-//power_cost = parseFloat(usageInfo['power_cost']);
+max_cost = parseFloat(usageInfo['max_power_usage']);
+max_power_usage = parseFloat(usageInfo['max_power_usage']);
+power_cost = parseFloat(usageInfo['power_cost']);
+user_set_state = usageInfo['user_set_state'];
+nickname = usageInfo['nickname'];
 </script>

@@ -46,7 +46,7 @@ function PrintHeader($P) {
 		</div>
 	<div id="navbar">
 	  <div id="logo"></div>
-	  <a href="index.html" title="Home" id="home"></a>
+	  <a href="getDevices.php" title="Home" id="home"></a>
 	  <div id="navigation">
 	    <ul>
 	      <li><a href="getDevices.php" title="Devices">Devices</a></li>

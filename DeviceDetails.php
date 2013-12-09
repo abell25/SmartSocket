@@ -7,6 +7,9 @@ $P = array('title' => 'Devices',
 PrintHeader($P);
 ?>
 <h2 id="device_name"></h2>
+<form>
+<input type="button" value="Print this page" onClick="window.print()" style="float:right;">
+</form>
 <div id="daterange" style="margin-bottom:20px;">
     Start <input type="date" name="start_date" id="start_date" />
     End <input type="date" name="end_date" id="end_date" />
